@@ -18,12 +18,18 @@ public class PlayerMove : MonoBehaviour
     [SerializeField]
     private GameObject flagPrefab;
     private float currentVelocity=0;
-    public GameObject Player;
-    public float fallDistance = 15;
+    public static GameObject _player;
+    public float fallDistance = 20;
+    public float maxPosition = 0;
+    private bool isDamaged = false;
+    
+    private PlayerHPUI playerHpUI;
     // Start is called before the first frame update
     void Start()
     {
+        _player = gameObject;
         myRigidbody2D = GetComponent<Rigidbody2D>();
+        playerHpUI = FindObjectOfType<PlayerHPUI>();
     }
 
     // Update is called once per frame
@@ -91,23 +97,32 @@ public class PlayerMove : MonoBehaviour
         BottomChk();
         if(isGround)
         {
-            if(currentVelocity<-fallDistance)
+            if (maxPosition - transform.position.y > 5)
             {
-                Debug.Log("������ �޾Ҿ�!!");
+                if (isDamaged) return;
+                isDamaged = true;
+                playerHpUI.FallDamaged();
             }
-            currentVelocity = 0;
+            maxPosition = 0;
         }
         else
         {
-            currentVelocity = myRigidbody2D.velocity.y;
+            isDamaged = false;
+
+            if (myRigidbody2D.velocity.y<0&& maxPosition<transform.position.y)
+            {
+                maxPosition = transform.position.y;
+            }
         }
+        playerHpUI.PlayerDead(_player);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("Thorn"))
         {
-            Player.SetActive(false);
+            _player.SetActive(false);
+            Time.timeScale = 0;
         }
     }
 }

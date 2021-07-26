@@ -23,6 +23,14 @@ public class PlayerHPUI : MonoBehaviour
         currentlyHP -= 3;
         Handle();
     }
+    public void PlayerDead(GameObject values)
+    {
+        if(currentlyHP<=0)
+        {
+            Destroy(values);
+            Time.timeScale = 0;
+        }
+    }
     private void Handle()
     {
         slider.value= currentlyHP / maxHP;
