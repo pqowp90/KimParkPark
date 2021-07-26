@@ -10,8 +10,11 @@ public class OnOff : MonoBehaviour
     private int maxObjectCount;
     
     private IActive active;
-    private int isOn = 1;
+    private int isOn = -1;
 
+    private void Start(){
+        Active();
+    }
     private void OnTriggerEnter2D(Collider2D collision){
         if(collision.CompareTag("Player")||collision.CompareTag("Flag")){
             Active();
