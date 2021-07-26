@@ -50,6 +50,7 @@ public class PlayerMove : MonoBehaviour
             Xrate = 9f;
         }else{
             Xrate = 3f;
+            transform.rotation = Quaternion.Euler(0f,(hori>0)?0f:180f,0f);
         }
         horizonXM = Mathf.Lerp(horizonXM,hori*speed,Time.deltaTime*Xrate);
         myRigidbody2D.velocity=new Vector2(horizonXM,
