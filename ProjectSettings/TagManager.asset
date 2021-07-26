@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - PlayerHitBox
+  - Bottom
   layers:
   - Default
   - TransparentFX
@@ -14,7 +15,7 @@ TagManager:
   - UI
   - PlayerHitBox
   - Poortal
-  - 
+  - flag
   - 
   - 
   - 
