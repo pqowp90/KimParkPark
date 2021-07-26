@@ -9,6 +9,7 @@ public class Poortal : MonoBehaviour
 
     public bool isPoortal = false;
 
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (isPoortal) return;
@@ -22,15 +23,14 @@ public class Poortal : MonoBehaviour
                 collision.gameObject.transform.parent.position = poortal.transform.position;
             }
             Debug.Log("¿Ãµø");
+            Invoke("PoortalExit" , 0.1f);
 
         }
     }
-    private void OnTriggerExit2D(Collider2D collision)
+    private void PoortalExit()
     {
-        if (collision.CompareTag("PlayerHitBox") || collision.CompareTag("Flag"))
-        {
-            isPoortal = false;
-        }
+        isPoortal = false;
+        poortal.GetComponent<Poortal>().isPoortal = false;
     }
 
 }
