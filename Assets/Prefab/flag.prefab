@@ -90,8 +90,8 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 0}
   m_AABB:
-    m_Center: {x: 0.35237598, y: 0.14282355, z: 3.6161067}
-    m_Extent: {x: 5.352377, y: 0.3643253, z: 3.6161063}
+    m_Center: {x: 0.37419176, y: 0.14084426, z: 3.6163461}
+    m_Extent: {x: 5.3741927, y: 0.3624585, z: 3.6163456}
   m_DirtyAABB: 0
 --- !u!183 &7032531827420406264
 Cloth:
@@ -397,7 +397,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7032531827481408271}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.264, y: -0.297, z: 0}
+  m_LocalPosition: {x: 0.264, y: -0.297, z: -0.454}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7032531827725310709}
@@ -438,7 +438,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.19971436, y: -0.005101964}
+  m_Offset: {x: -0.027412236, y: -0.005101964}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -449,7 +449,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.46445614, y: 0.0789105}
+  m_Size: {x: 0.11985192, y: 0.0789105}
   m_EdgeRadius: 0
 --- !u!114 &7032531827481408275
 MonoBehaviour:
@@ -464,6 +464,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isLook: 0
+  isFloor: 0
 --- !u!1 &7032531827725310711
 GameObject:
   m_ObjectHideFlags: 0
