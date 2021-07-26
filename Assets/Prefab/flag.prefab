@@ -90,8 +90,8 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 0}
   m_AABB:
-    m_Center: {x: -0.3638463, y: 0.13791782, z: 0.359303}
-    m_Extent: {x: 5.363848, y: 0.5030676, z: 4.6406965}
+    m_Center: {x: 0.35237598, y: 0.14282355, z: 3.6161067}
+    m_Extent: {x: 5.352377, y: 0.3643253, z: 3.6161063}
   m_DirtyAABB: 0
 --- !u!183 &7032531827420406264
 Cloth:
@@ -396,14 +396,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7032531827481408271}
-  m_LocalRotation: {x: -0, y: -0, z: -0.27865866, w: 0.9603902}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.264, y: -0.297, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7032531827725310709}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -32.36}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &7032531827481408269
 Rigidbody2D:
   serializedVersion: 4
@@ -438,7 +438,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0018911958, y: 0.24585086}
+  m_Offset: {x: -0.19971436, y: -0.005101964}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -449,7 +449,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.073331475, y: 0.55368614}
+  m_Size: {x: 0.46445614, y: 0.0789105}
   m_EdgeRadius: 0
 --- !u!114 &7032531827481408275
 MonoBehaviour:
@@ -463,6 +463,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7858aca710005f428bbf12606690ae2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isLook: 0
 --- !u!1 &7032531827725310711
 GameObject:
   m_ObjectHideFlags: 0
@@ -488,14 +489,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7032531827725310711}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7032531827420406267}
   m_Father: {fileID: 7032531827481408274}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!212 &7032531827725310708
 SpriteRenderer:
   m_ObjectHideFlags: 0

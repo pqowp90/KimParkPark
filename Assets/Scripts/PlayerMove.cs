@@ -46,7 +46,7 @@ public class PlayerMove : MonoBehaviour
         flag.transform.rotation = Quaternion.Euler(0f,0f,rotateDegree);
         flag.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
         flag.GetComponent<Rigidbody2D>().velocity = new Vector2(x*10f,y*10f);
-        
+        flag.GetComponent<flag>().isLook=true;
 
     }
     private void Jump(){
