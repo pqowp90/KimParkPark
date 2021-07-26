@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class flag : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class flag : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision){
         isLook = false;
         isFloor = true;
+        myRigidbody2D.velocity = Vector2.zero;
+        transform.DORotateQuaternion(Quaternion.Euler(0f,0f,-90f),1f);
     }
     private void FlagRotation(){
         rotateDegree = Mathf.Atan2(myRigidbody2D.velocity.y, myRigidbody2D.velocity.x);
