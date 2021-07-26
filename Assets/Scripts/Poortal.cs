@@ -12,17 +12,22 @@ public class Poortal : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (isPoortal) return;
-        if (collision.CompareTag("PlayerHitBox"))
+        if (collision.CompareTag("PlayerHitBox")||collision.CompareTag("Flag"))
         {
             poortal.GetComponent<Poortal>().isPoortal = true;
-            collision.gameObject.transform.parent.position = poortal.transform.position;
+            if(collision.gameObject.transform.parent == null){
+                collision.gameObject.transform.position = poortal.transform.position;
+            }
+            else{
+                collision.gameObject.transform.parent.position = poortal.transform.position;
+            }
             Debug.Log("¿Ãµø");
 
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("PlayerHitBox"))
+        if (collision.CompareTag("PlayerHitBox") || collision.CompareTag("Flag"))
         {
             isPoortal = false;
         }
