@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: d3f597413a92e8840a8fb216656fc1f3
+guid: db9a449f7362b9945a0de7133cd6464c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2615995671991531584
-    second: Sprite-0005-Sheet_0
+      213: -5071563641634004584
+    second: standing_0
   - first:
-      213: 5770043171015704252
-    second: Sprite-0005-Sheet_1
+      213: -4856210911436824162
+    second: standing_1
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -109,13 +109,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Sprite-0005-Sheet_0
+      name: standing_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 37
-        height: 64
+        width: 34
+        height: 63
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -123,20 +123,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 048b30b1432ed4420800000000000000
-      internalID: 2615995671991531584
+      spriteID: 8916e9cfcbf2e99b0800000000000000
+      internalID: -5071563641634004584
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite-0005-Sheet_1
+      name: standing_1
       rect:
         serializedVersion: 2
-        x: 37
+        x: 34
         y: 0
-        width: 37
-        height: 64
+        width: 34
+        height: 63
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -144,8 +144,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cbe3f0b61bf431050800000000000000
-      internalID: 5770043171015704252
+      spriteID: e91ae65c7e54b9cb0800000000000000
+      internalID: -4856210911436824162
       vertices: []
       indices: 
       edges: []
