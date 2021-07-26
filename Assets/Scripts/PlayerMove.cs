@@ -17,11 +17,16 @@ public class PlayerMove : MonoBehaviour
     private GameObject flagPrefab;
     private float currentVelocity=0;
     public GameObject Player;
-    public float fallDistance = 15;
+    public float fallDistance = 20;
+    public float maxPosition = 0;
+    private bool isDamaged = false;
+    
+    private PlayerHPUI playerHpUI;
     // Start is called before the first frame update
     void Start()
     {
         myRigidbody2D = GetComponent<Rigidbody2D>();
+        playerHpUI = FindObjectOfType<PlayerHPUI>();
     }
 
     // Update is called once per frame
@@ -89,15 +94,20 @@ public class PlayerMove : MonoBehaviour
         BottomChk();
         if(isGround)
         {
-            if(currentVelocity<-fallDistance)
+            if (maxPosition - transform.position.y > 5)
             {
-                Debug.Log("낙뎀을 받았어!!");
+                if (isDamaged) return;
+                isDamaged = true;
+                playerHpUI.FallDamaged();
             }
-            currentVelocity = 0;
+            maxPosition = 0;
         }
         else
         {
-            currentVelocity = myRigidbody2D.velocity.y;
+            if(myRigidbody2D.velocity.y<0&& maxPosition<transform.position.y)
+            {
+                maxPosition = transform.position.y;
+            }
         }
     }
 
@@ -106,6 +116,7 @@ public class PlayerMove : MonoBehaviour
         if(collision.CompareTag("Thorn"))
         {
             Player.SetActive(false);
+            Time.timeScale = 0;
         }
     }
 }
