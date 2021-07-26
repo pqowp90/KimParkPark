@@ -9,6 +9,7 @@ public class PlayerHPUI : MonoBehaviour
     private Slider slider;
     private float maxHP = 10;
     private float currentlyHP = 10;
+    public float fallDamage = 5;
     void Start()
     {
         slider.value = currentlyHP / maxHP;
@@ -20,7 +21,7 @@ public class PlayerHPUI : MonoBehaviour
     }
     public void FallDamaged()
     {
-        currentlyHP -= 3;
+        currentlyHP -= fallDamage;
         Handle();
     }
     public void PlayerDead(GameObject values)
