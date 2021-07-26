@@ -305,12 +305,17 @@ MonoBehaviour:
   bottomchkDistance: 0.5
   jumpMaxTime: 0.25
   jumpingTime: 0
+  rotateDegree: 0
+  x: 0
+  y: 0
+  radian: 0
   bottomChk: {fileID: 2138402853}
   isGround: 0
   isJumping: 0
   isBack: 0
+  flagPrefab: {fileID: 0}
+  currentVelocity: 0
   Player: {fileID: 140394378}
-  fallDistance: 10
 --- !u!50 &140394381
 Rigidbody2D:
   serializedVersion: 4

@@ -15,6 +15,9 @@ public class PlayerMove : MonoBehaviour
     private Vector2 oPosition;
     [SerializeField]
     private GameObject flagPrefab;
+    private float currentVelocity=0;
+    public GameObject Player;
+    public float fallDistance = 15;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +29,7 @@ public class PlayerMove : MonoBehaviour
     {
         Move();
         Jump();
-        BottomChk();
+        fallDamaged();
         HeadRotation(Camera.main.ScreenToWorldPoint(Input.mousePosition));
         if(Input.GetKeyDown(KeyCode.W)){
             Throwing();
@@ -81,5 +84,28 @@ public class PlayerMove : MonoBehaviour
         myRigidbody2D.velocity=new Vector2(horizonXM,
             myRigidbody2D.velocity.y);
     }
+    private void fallDamaged()
+    {
+        BottomChk();
+        if(isGround)
+        {
+            if(currentVelocity<-fallDistance)
+            {
+                Debug.Log("낙뎀을 받았어!!");
+            }
+            currentVelocity = 0;
+        }
+        else
+        {
+            currentVelocity = myRigidbody2D.velocity.y;
+        }
+    }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Thorn"))
+        {
+            Player.SetActive(false);
+        }
+    }
 }
