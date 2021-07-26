@@ -11,7 +11,7 @@ public class PlayerMove : MonoBehaviour
     private Rigidbody2D myRigidbody2D;
     [SerializeField]
     private Transform bottomChk;
-    public bool isGround,isJumping;
+    public bool isGround,isJumping,isBack;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,8 +41,8 @@ public class PlayerMove : MonoBehaviour
         }
     }
     void BottomChk(){
-        Debug.DrawRay(bottomChk.position, Vector3.right*bottomchkDistance, Color.blue);
-		isGround = Physics2D.Raycast(bottomChk.position,Vector3.right * bottomchkDistance, bottomchkDistance);
+        Debug.DrawRay(bottomChk.position, ((isBack)?Vector3.right:Vector3.left)*bottomchkDistance, Color.blue);
+		isGround = Physics2D.Raycast(bottomChk.position,((isBack)?Vector3.right:Vector3.left) * bottomchkDistance, bottomchkDistance);
     }
     private void Move(){
         hori = Input.GetAxisRaw("Horizontal");
@@ -50,7 +50,8 @@ public class PlayerMove : MonoBehaviour
             Xrate = 9f;
         }else{
             Xrate = 3f;
-            transform.rotation = Quaternion.Euler(0f,(hori>0)?0f:180f,0f);
+            isBack = (hori>0);
+            transform.rotation = Quaternion.Euler(0f,(isBack)?0f:180f,0f);
         }
         horizonXM = Mathf.Lerp(horizonXM,hori*speed,Time.deltaTime*Xrate);
         myRigidbody2D.velocity=new Vector2(horizonXM,
