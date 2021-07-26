@@ -18,7 +18,6 @@ public class FanCode : MonoBehaviour
         if(collider2D.transform.parent==null)return;
         if(collider2D.transform.parent.GetComponent<Rigidbody2D>()==null)return;
         Rigidbody2D rigid = collider2D.transform.parent.GetComponent<Rigidbody2D>();
-        Debug.Log("d");
         rotateDegree = transform.eulerAngles.z+90f;
         radian = rotateDegree*Mathf.PI/180f;
         x =Mathf.Cos(radian);
