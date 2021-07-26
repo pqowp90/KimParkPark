@@ -23,7 +23,7 @@ public class flag : MonoBehaviour
         isLook = false;
         isFloor = true;
         myRigidbody2D.velocity = Vector2.zero;
-        transform.DORotateQuaternion(Quaternion.Euler(0f,0f,-90f),1f);
+        transform.DORotateQuaternion(Quaternion.Euler(0f,0f,-90f),0.5f);
     }
     private void FlagRotation(){
         rotateDegree = Mathf.Atan2(myRigidbody2D.velocity.y, myRigidbody2D.velocity.x);

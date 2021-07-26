@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 74871637}
   - component: {fileID: 74871636}
   - component: {fileID: 74871639}
+  - component: {fileID: 74871635}
   m_Layer: 2
   m_Name: smo
   m_TagString: Untagged
@@ -141,6 +142,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!95 &74871635
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 74871634}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d28f4d34b2f4f13488d87bf5111c6cd5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!212 &74871636
 SpriteRenderer:
   m_ObjectHideFlags: 0
