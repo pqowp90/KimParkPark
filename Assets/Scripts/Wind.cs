@@ -22,6 +22,6 @@ public class Wind : MonoBehaviour
         else{
             objectRigidbody2D = collision.gameObject.transform.parent.GetComponent<Rigidbody2D>();
         }
-       objectRigidbody2D.velocity = new Vector2(objectRigidbody2D.velocity.x * x * 3f, objectRigidbody2D.velocity.y * y* 100f);
+       objectRigidbody2D.velocity = new Vector2(objectRigidbody2D.velocity.x * x * 3f, objectRigidbody2D.velocity.y * y* 3f);
     }
 }
