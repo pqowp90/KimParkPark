@@ -91,7 +91,7 @@ public class PlayerMove : MonoBehaviour
         {
             if(currentVelocity<-fallDistance)
             {
-                Debug.Log("³«µ©À» ¹Þ¾Ò¾î!!");
+                Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¾Ò¾ï¿½!!");
             }
             currentVelocity = 0;
         }

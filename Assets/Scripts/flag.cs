@@ -7,7 +7,9 @@ public class flag : MonoBehaviour
 {
     private float rotateDegree;
     private Rigidbody2D myRigidbody2D;
-    public bool isLook=false,isFloor;
+    [SerializeField]
+    private Collider2D myCollider2D;
+    public bool isLook=false,isFloor,isHand;
     void Start()
     {
         myRigidbody2D = GetComponent<Rigidbody2D>();
@@ -15,11 +17,14 @@ public class flag : MonoBehaviour
 
     void Update()
     {
+        myCollider2D.enabled = !isHand;
+        if(isHand)return;
         if(isLook){
             FlagRotation();
         }
     }
     void OnCollisionEnter2D(Collision2D collision){
+        if(isHand)return;
         isLook = false;
         isFloor = true;
         myRigidbody2D.velocity = Vector2.zero;
