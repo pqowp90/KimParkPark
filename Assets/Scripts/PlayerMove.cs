@@ -12,6 +12,9 @@ public class PlayerMove : MonoBehaviour
     [SerializeField]
     private Transform bottomChk;
     public bool isGround,isJumping,isBack;
+    public GameObject Player;
+    private float currentVelocity = 0;
+    public float fallDistance = 10f;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +26,7 @@ public class PlayerMove : MonoBehaviour
     {
         Move();
         Jump();
-        BottomChk();
+        fallDamage();
     }
     private void Jump(){
         if(Input.GetKeyDown(KeyCode.Space)&&isGround){
@@ -56,6 +59,31 @@ public class PlayerMove : MonoBehaviour
         horizonXM = Mathf.Lerp(horizonXM,hori*speed,Time.deltaTime*Xrate);
         myRigidbody2D.velocity=new Vector2(horizonXM,
             myRigidbody2D.velocity.y);
+    }
+    private void fallDamage()
+    {
+        BottomChk();
+        if(isGround)
+        {
+            if(currentVelocity<-fallDistance)
+            {
+                Debug.Log("낙뎀을 받았다!!");
+            }
+            currentVelocity = 0;
+        }
+        else
+        {
+            currentVelocity = myRigidbody2D.velocity.y;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Thorn"))
+        {
+            Debug.Log("가시에 닿았어");
+            Player.SetActive(false);
+        }
     }
 
 }
