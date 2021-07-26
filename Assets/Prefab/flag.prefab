@@ -521,8 +521,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7858aca710005f428bbf12606690ae2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myCollider2D: {fileID: 13552540813966216}
   isLook: 0
   isFloor: 0
+  isHand: 0
 --- !u!1 &7032531827725310711
 GameObject:
   m_ObjectHideFlags: 0
