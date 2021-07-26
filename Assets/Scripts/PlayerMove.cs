@@ -11,7 +11,8 @@ public class PlayerMove : MonoBehaviour
     private Rigidbody2D myRigidbody2D;
     [SerializeField]
     private Transform bottomChk;
-    public bool isGround,isJumping;
+    public bool isGround,isJumping , isPoortal;
+
     // Start is called before the first frame update
     void Start()
     {
