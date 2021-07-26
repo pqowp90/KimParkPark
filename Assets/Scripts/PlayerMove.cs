@@ -114,7 +114,8 @@ public class PlayerMove : MonoBehaviour
                 maxPosition = transform.position.y;
             }
         }
-        playerHpUI.PlayerDead(_player);
+        if(_player!=null&&playerHpUI!=null)
+            playerHpUI.PlayerDead(_player);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
