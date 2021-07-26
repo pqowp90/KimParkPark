@@ -25,11 +25,9 @@ public class OnOff : MonoBehaviour
             active = things[i].GetComponent<IActive>();
             if(isOn == 1){
                 active.UnActive();
-                Debug.Log("À×");
             }
             else if(isOn == -1){
                 active.Active();
-                Debug.Log("¿Ë");
             }
         }
         isOn *= -1;
