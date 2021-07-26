@@ -10,6 +10,8 @@ public class PlayerMove : MonoBehaviour
     private float speed,jumpPower,bottomchkDistance,jumpMaxTime,jumpingTime,rotateDegree,x,y,radian;
     private Rigidbody2D myRigidbody2D;
     [SerializeField]
+    private LayerMask g_layerMask;
+    [SerializeField]
     private Transform bottomChk;
     public bool isGround,isJumping,isBack;
     private Vector2 oPosition;
@@ -75,7 +77,7 @@ public class PlayerMove : MonoBehaviour
     }
     void BottomChk(){
         Debug.DrawRay(bottomChk.position, ((isBack)?Vector3.right:Vector3.left)*bottomchkDistance, Color.blue);
-		isGround = Physics2D.Raycast(bottomChk.position,((isBack)?Vector3.right:Vector3.left) * bottomchkDistance, bottomchkDistance);
+		isGround = Physics2D.Raycast(bottomChk.position,((isBack)?Vector3.right:Vector3.left) * bottomchkDistance, bottomchkDistance,g_layerMask);
     }
     private void Move(){
         hori = Input.GetAxisRaw("Horizontal");
@@ -112,7 +114,8 @@ public class PlayerMove : MonoBehaviour
                 maxPosition = transform.position.y;
             }
         }
-        playerHpUI.PlayerDead(_player);
+        if(_player!=null&&playerHpUI!=null)
+            playerHpUI.PlayerDead(_player);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

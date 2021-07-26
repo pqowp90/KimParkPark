@@ -22,7 +22,6 @@ public class Poortal : MonoBehaviour
             else{
                 collision.gameObject.transform.parent.position = poortal.transform.position;
             }
-            Debug.Log("¿Ãµø");
             Invoke("PoortalExit" , 0.1f);
 
         }
