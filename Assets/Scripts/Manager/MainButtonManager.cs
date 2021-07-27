@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MainButtonManager : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class MainButtonManager : MonoBehaviour
     [Header("¹öÆ°")]
     [SerializeField]
     private Canvas buttonCanvas = null;
+    [SerializeField]
+    private Slider volumeSlider;
 
     private PlayerMove playerMove = null;
 
@@ -36,6 +39,7 @@ public class MainButtonManager : MonoBehaviour
         settingButtons.enabled = true;
         AudioListener.pause = true;
         buttonCanvas.enabled = false;
+        volumeSlider.interactable = true;
         Time.timeScale = 0f;
         playerMove.isPause = true;
     }
@@ -47,5 +51,6 @@ public class MainButtonManager : MonoBehaviour
         AudioListener.pause = false;
         Time.timeScale = 1f;
         playerMove.isPause = false;
+        volumeSlider.interactable = false;
     }
 }

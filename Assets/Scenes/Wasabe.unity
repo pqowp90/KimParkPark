@@ -3004,6 +3004,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chook: {fileID: 1068220236}
   on: 0
+  isTouch: 0
   audioSource: []
 --- !u!60 &186058599
 PolygonCollider2D:
@@ -19162,6 +19163,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 516978360}
     m_Modifications:
+    - target: {fileID: 651769254458263505, guid: 30f4803e20b7ea0419c0b2cee81639e9, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -7.4095902
+      objectReference: {fileID: 0}
+    - target: {fileID: 651769254458263505, guid: 30f4803e20b7ea0419c0b2cee81639e9, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: -3.7891192
+      objectReference: {fileID: 0}
     - target: {fileID: 651769254912752449, guid: 30f4803e20b7ea0419c0b2cee81639e9, type: 3}
       propertyPath: m_Name
       value: Sprite-0011dsd11
@@ -19174,6 +19183,10 @@ PrefabInstance:
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 272272465}
+    - target: {fileID: 651769254912752461, guid: 30f4803e20b7ea0419c0b2cee81639e9, type: 3}
+      propertyPath: audioSource2
+      value: 
+      objectReference: {fileID: 1325391891}
     - target: {fileID: 651769254912752461, guid: 30f4803e20b7ea0419c0b2cee81639e9, type: 3}
       propertyPath: audioSource.Array.size
       value: 2
@@ -25300,7 +25313,7 @@ GameObject:
   - component: {fileID: 1325391890}
   - component: {fileID: 1325391891}
   m_Layer: 0
-  m_Name: LeverSound (1)
+  m_Name: LeverSound2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
