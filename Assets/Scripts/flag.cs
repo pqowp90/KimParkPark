@@ -19,6 +19,7 @@ public class flag : MonoBehaviour
 
     void Update()
     {
+        transform.position = new Vector3(transform.position.x,transform.position.y,-8f);
         myCollider2D.enabled = !isHand;
         if(isHand){
             transform.localRotation = Quaternion.Euler(0f,0f,-135.254f);
