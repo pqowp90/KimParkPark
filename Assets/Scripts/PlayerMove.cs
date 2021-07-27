@@ -64,6 +64,7 @@ public class PlayerMove : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f,(isBack)?0f:180f,0f);
         }
         if(Input.GetMouseButtonUp(0)){
+            if(!isCharging)return;
             isCharging = false;
             myAnimator.SetBool("IsCharging",isCharging);
             Throwing();
@@ -88,7 +89,7 @@ public class PlayerMove : MonoBehaviour
         flagPrefab.GetComponent<flag>().isHand = false;
     }
     private void FlagPickUp(){
-        flagPrefab.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+        flagPrefab.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
         flagPrefab.transform.SetParent(hand.transform);
         flagPrefab.GetComponent<flag>().isFloor = false;
         flagPrefab.GetComponent<flag>().isLook=false;
@@ -166,7 +167,7 @@ public class PlayerMove : MonoBehaviour
     {
         if(collision.gameObject.layer == 15){
             isDouble = false;
-            Debug.Log("³ª°¨");
+            Debug.Log("ï¿½ï¿½ï¿½ï¿½");
             gameObject.layer = 0;
         }
         if(collision.gameObject.layer == 9){
@@ -178,7 +179,7 @@ public class PlayerMove : MonoBehaviour
     {
         if(collision.gameObject.layer == 15){
             isDouble = true;
-            Debug.Log("µé¾î¿È");
+            Debug.Log("ï¿½ï¿½ï¿½ï¿½");
         }
         if(collision.gameObject.layer == 9){
             ohohFlag = true;
