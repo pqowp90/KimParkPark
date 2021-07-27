@@ -155,7 +155,7 @@ public class PlayerMove : MonoBehaviour
         //{
         //}
     }
-    private void OnTriggerEixt2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
         if(collision.gameObject.layer == 9){
             ohohFlag = false;
