@@ -1,22 +1,16 @@
 fileFormatVersion: 2
-guid: 61502bd9500a6a3449aff09a59e42b58
+guid: 5379f48d096bbe8408392cfc172cde85
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3154260340902849667
-    second: Sprite-0012-Sheet_0
+      213: 4214149858688995037
+    second: Clock_0
   - first:
-      213: 1060836751422986202
-    second: Sprite-0012-Sheet_1
+      213: 7792039334551005206
+    second: Clock_1
   - first:
-      213: 7423661674469418741
-    second: Sprite-0012-Sheet_2
-  - first:
-      213: -6087216879386238517
-    second: Sprite-0012-Sheet_3
-  - first:
-      213: -6695669711000053942
-    second: Sprite-0012-Sheet_4
+      213: 8606200704858056018
+    second: Clock_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -47,7 +41,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -61,7 +55,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 50
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -80,7 +74,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 2
@@ -92,7 +86,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
-    maxTextureSize: 2048
+    maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 2
@@ -104,7 +98,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Android
-    maxTextureSize: 2048
+    maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 2
@@ -118,106 +112,64 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Sprite-0012-Sheet_0
+      name: Clock_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 900
+        width: 1600
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dde8b6d08faab7a30800000000000000
+      internalID: 4214149858688995037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Clock_1
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 900
+        width: 1600
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 618a8c3ad72e22c60800000000000000
+      internalID: 7792039334551005206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Clock_2
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 100
-        height: 60
+        width: 1600
+        height: 900
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d7312639ee0d934d0800000000000000
-      internalID: -3154260340902849667
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Sprite-0012-Sheet_1
-      rect:
-        serializedVersion: 2
-        x: 100
-        y: 0
-        width: 100
-        height: 60
-      alignment: 9
-      pivot: {x: 0.5, y: 0.54}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ad71f35a769d8be00800000000000000
-      internalID: 1060836751422986202
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Sprite-0012-Sheet_2
-      rect:
-        serializedVersion: 2
-        x: 200
-        y: 0
-        width: 100
-        height: 60
-      alignment: 9
-      pivot: {x: 0.5, y: 0.54}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5f66e6fe5f4260760800000000000000
-      internalID: 7423661674469418741
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Sprite-0012-Sheet_3
-      rect:
-        serializedVersion: 2
-        x: 300
-        y: 0
-        width: 100
-        height: 60
-      alignment: 9
-      pivot: {x: 0.5, y: 0.54}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bc1eb69ef7cd58ba0800000000000000
-      internalID: -6087216879386238517
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Sprite-0012-Sheet_4
-      rect:
-        serializedVersion: 2
-        x: 400
-        y: 0
-        width: 100
-        height: 60
-      alignment: 9
-      pivot: {x: 0.5, y: 0.54}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a47df7e7fd33413a0800000000000000
-      internalID: -6695669711000053942
+      spriteID: 255e7c681fd5f6770800000000000000
+      internalID: 8606200704858056018
       vertices: []
       indices: 
       edges: []

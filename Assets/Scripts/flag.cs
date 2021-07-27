@@ -19,7 +19,10 @@ public class flag : MonoBehaviour
     void Update()
     {
         myCollider2D.enabled = !isHand;
-        if(isHand)return;
+        if(isHand){
+            transform.localRotation = Quaternion.Euler(0f,0f,-142.758f);
+            return;
+        }
         if(isLook){
             FlagRotation();
         }
