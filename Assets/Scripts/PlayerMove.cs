@@ -7,7 +7,7 @@ public class PlayerMove : MonoBehaviour
 {
     private float horizonXM,hori,Xrate;
     [SerializeField]
-    private float speed,jumpPower,bottomchkDistance,jumpMaxTime,jumpingTime,rotateDegree,x,y,radian;
+    private float speed,nowSpeed,jumpPower,bottomchkDistance,jumpMaxTime,jumpingTime,rotateDegree,x,y,radian;
     private Rigidbody2D myRigidbody2D;
     [SerializeField]
     private LayerMask g_layerMask;
@@ -17,12 +17,12 @@ public class PlayerMove : MonoBehaviour
     public bool isGround,isJumping,isBack;
     private Vector2 oPosition;
     [SerializeField]
-    private GameObject flagPrefab;
+    private GameObject flagPrefab,hand;
     private float currentVelocity=0;
     public static GameObject _player;
     public float fallDistance = 20,flagStrength;
     public float maxPosition = 0;
-    private bool isDamaged = false,isCharging;
+    private bool isDamaged = false,isCharging,ohohFlag;
     
     private PlayerHPUI playerHpUI;
     // Start is called before the first frame update
@@ -41,13 +41,14 @@ public class PlayerMove : MonoBehaviour
         Jump();
         fallDamaged();
         HeadRotation(Camera.main.ScreenToWorldPoint(Input.mousePosition));
-        if(Input.GetKeyDown(KeyCode.W)){
-            Throwing();
-        }
         FalgCharging();
+        if(Input.GetKeyDown(KeyCode.F)&&ohohFlag){
+            FlagPickUp();
+        }
     }
     private void FalgCharging(){
         if(Input.GetMouseButtonDown(0)){
+            if(!flagPrefab.GetComponent<flag>().isHand)return;
             myAnimator.SetTrigger("boom");
             
             
@@ -58,7 +59,7 @@ public class PlayerMove : MonoBehaviour
         if(Input.GetMouseButton(0)){
             myAnimator.SetFloat("Blend",flagStrength);
             flagStrength += Time.deltaTime;
-            flagStrength=Mathf.Clamp(flagStrength,0f,3f);
+            flagStrength=Mathf.Clamp(flagStrength,0f,2f);
             isBack = (transform.position.x - Camera.main.ScreenToWorldPoint(Input.mousePosition).x<0);
             transform.rotation = Quaternion.Euler(0f,(isBack)?0f:180f,0f);
         }
@@ -74,28 +75,37 @@ public class PlayerMove : MonoBehaviour
         
     }
     private void Throwing(){
+        if(!flagPrefab.GetComponent<flag>().isHand)return;
         radian = rotateDegree*Mathf.PI/180f;
         x =Mathf.Cos(radian);
         y =Mathf.Sin(radian);
-        GameObject flag = Instantiate(flagPrefab);
-        flag.transform.position = transform.position;
-        flag.transform.rotation = Quaternion.Euler(0f,0f,rotateDegree);
-        flag.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-        flag.GetComponent<Rigidbody2D>().velocity = new Vector2(x,y)*flagStrength*5f;
-        flag.GetComponent<flag>().isLook=true;
-
+        flagPrefab.transform.SetParent(null);
+        flagPrefab.transform.position = transform.position;
+        flagPrefab.transform.rotation = Quaternion.Euler(0f,0f,rotateDegree);
+        flagPrefab.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+        flagPrefab.GetComponent<Rigidbody2D>().velocity = new Vector2(x,y)*flagStrength*5f;
+        flagPrefab.GetComponent<flag>().isLook=true;
+        flagPrefab.GetComponent<flag>().isHand = false;
+    }
+    private void FlagPickUp(){
+        flagPrefab.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+        flagPrefab.transform.SetParent(hand.transform);
+        flagPrefab.GetComponent<flag>().isLook=false;
+        flagPrefab.GetComponent<flag>().isHand = true;
+        flagPrefab.transform.localPosition = Vector3.zero;
+        flagPrefab.transform.localRotation = Quaternion.Euler(0f,0f,-142.758f);
     }
     private void Jump(){
-        if(Input.GetKeyDown(KeyCode.Space)&&isGround){
+        if(Input.GetButtonDown("Jump")&&isGround){
             isJumping=true;
             jumpingTime=0f;
         }
         if(isJumping)
             jumpingTime+=Time.deltaTime;
-        if(Input.GetKey(KeyCode.Space)&&isJumping&&jumpingTime<jumpMaxTime){
+        if(Input.GetButton("Jump")&&isJumping&&jumpingTime<jumpMaxTime){
             myRigidbody2D.velocity = new Vector2(myRigidbody2D.velocity.x,jumpPower-jumpingTime*7f);
         }
-        if(Input.GetKeyUp(KeyCode.Space)){
+        if(Input.GetButtonUp("Jump")){
             isJumping=false;
             jumpingTime=0f;
         }
@@ -105,6 +115,7 @@ public class PlayerMove : MonoBehaviour
 		isGround = Physics2D.Raycast(bottomChk.position,((isBack)?Vector3.right:Vector3.left) * bottomchkDistance, bottomchkDistance,g_layerMask);
     }
     private void Move(){
+        nowSpeed = speed*((!isCharging)?1f:0.1f);
         hori = Input.GetAxisRaw("Horizontal");
         if(hori==0){
             Xrate = 9f;
@@ -113,7 +124,7 @@ public class PlayerMove : MonoBehaviour
             isBack = (hori>0);
             transform.rotation = Quaternion.Euler(0f,(isBack)?0f:180f,0f);
         }
-        horizonXM = Mathf.Lerp(horizonXM,hori*speed,Time.deltaTime*Xrate);
+        horizonXM = Mathf.Lerp(horizonXM,hori*nowSpeed,Time.deltaTime*Xrate);
         myRigidbody2D.velocity=new Vector2(horizonXM,
             myRigidbody2D.velocity.y);
     }
@@ -143,9 +154,18 @@ public class PlayerMove : MonoBehaviour
         //{
         //}
     }
+    private void OnTriggerEixt2D(Collider2D collision)
+    {
+        if(collision.gameObject.layer == 9){
+            ohohFlag = false;
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if(collision.gameObject.layer == 9){
+            ohohFlag = true;
+        }
         if(collision.CompareTag("Thorn"))
         {
             _player.SetActive(false);
