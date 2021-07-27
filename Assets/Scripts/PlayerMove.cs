@@ -39,7 +39,8 @@ public class PlayerMove : MonoBehaviour
     {
         Move();
         Jump();
-        fallDamaged();
+        BottomChk();
+        //fallDamaged();
         HeadRotation(Camera.main.ScreenToWorldPoint(Input.mousePosition));
         FalgCharging();
         if(Input.GetKeyDown(KeyCode.F)&&ohohFlag){
