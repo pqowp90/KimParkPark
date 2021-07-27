@@ -90,9 +90,9 @@ public class PlayerMove : MonoBehaviour
     private void FlagPickUp(){
         flagPrefab.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
         flagPrefab.transform.SetParent(hand.transform);
+        flagPrefab.GetComponent<flag>().isFloor = false;
         flagPrefab.GetComponent<flag>().isLook=false;
         flagPrefab.GetComponent<flag>().isHand = true;
-        flagPrefab.GetComponent<flag>().isFloor = false;
         flagPrefab.transform.localPosition = Vector3.zero;
         flagPrefab.transform.localRotation = Quaternion.Euler(0f,0f,-142.758f);
     }
