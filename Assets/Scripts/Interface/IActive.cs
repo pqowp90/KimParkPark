@@ -4,6 +4,5 @@ using UnityEngine;
 
 public interface IActive
 {
-    void Active();
-    void UnActive();
+    void Active(bool onon);
 }

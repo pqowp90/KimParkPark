@@ -6,6 +6,7 @@ public class Lever : MonoBehaviour
 {
     [SerializeField]
     private Transform chook;
+    public bool on;
     void Start()
     {
         
@@ -13,6 +14,13 @@ public class Lever : MonoBehaviour
 
     void Update()
     {
-        transform.position = chook.position;
+        if(chook.rotation.z>0f&&on){
+            on = false;
+        }else if(chook.rotation.z<0f&&!on){
+            on = true;
+        }
+    }
+    void OnTriggerStay2D(Collider2D collider2D){
+        collider2D.GetComponent<IActive>().Active(on);
     }
 }

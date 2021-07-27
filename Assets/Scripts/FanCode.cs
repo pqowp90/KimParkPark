@@ -46,10 +46,8 @@ public class FanCode : MonoBehaviour, IActive
         rigid.AddForce(new Vector2(x,y)*Time.deltaTime*10000f);
         rigid.velocity = new Vector2(Mathf.Clamp(rigid.velocity.x,-5f,5f),Mathf.Clamp(rigid.velocity.y,-5f,5f));
     }
-    void IActive.Active(){
-        on=true;
+    void IActive.Active(bool onon){
+        on=onon;
     }
-    void IActive.UnActive(){
-        on=false;
-    }
+
 }
