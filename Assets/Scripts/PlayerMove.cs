@@ -89,7 +89,8 @@ public class PlayerMove : MonoBehaviour
         flagPrefab.GetComponent<flag>().isHand = false;
     }
     private void FlagPickUp(){
-        flagPrefab.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+        flagPrefab.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+        flagPrefab.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         flagPrefab.transform.SetParent(hand.transform);
         flagPrefab.GetComponent<flag>().isFloor = false;
         flagPrefab.GetComponent<flag>().isLook=false;
