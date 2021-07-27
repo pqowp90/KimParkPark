@@ -17,7 +17,7 @@ public class EndFlag : MonoBehaviour
             collision.gameObject.transform.position = new Vector2(endPos.transform.position.x , endPos.transform.position.y);
             onFlag = true;
         }
-        if(collision.CompareTag("PlayerHitBox")&&onFlag){
+        if(collision.gameObject.layer == 2&&onFlag){
             Debug.Log("Å¬¸®¾î");
             maps[i].SetActive(false);
             i +=1;
