@@ -21,7 +21,7 @@ public class PlayerMove : MonoBehaviour
     public static GameObject _player;
     public float fallDistance = 20;
     public float maxPosition = 0;
-    public bool isDamaged = false;
+    private bool isDamaged = false;
     
     private PlayerHPUI playerHpUI;
     // Start is called before the first frame update
