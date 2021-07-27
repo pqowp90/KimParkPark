@@ -6,8 +6,11 @@ public class Poortal : MonoBehaviour
 {
     [SerializeField]
     private GameObject poortal = null;
+    [SerializeField]
+    private AudioSource audioSource = null;
 
     public bool isPoortal = false;
+    private bool isMusic = false;
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -21,12 +24,14 @@ public class Poortal : MonoBehaviour
             else{
                 collision.gameObject.transform.parent.position = poortal.transform.position;
             }
+            isMusic = true;
             Invoke("PoortalExit" , 0.6f);
-
+            audioSource.Play();
         }
     }
     private void PoortalExit()
     {
+        isMusic = false;
         isPoortal = false;
         poortal.GetComponent<Poortal>().isPoortal = false;
     }

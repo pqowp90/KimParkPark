@@ -190,7 +190,7 @@ public class PlayerMove : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.layer == 15){
+        if(collision.gameObject.layer == 21){
             isDouble = true;
             Debug.Log("����");
         }

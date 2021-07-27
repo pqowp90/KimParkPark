@@ -9,10 +9,12 @@ public class Lever : MonoBehaviour
     [SerializeField]
     private bool on;
     private Pipe pipe;
-
+    [SerializeField]
+    private AudioSource audioSource;
 
     void Start(){
         pipe = GetComponentInChildren<Pipe>();
+        audioSource.enabled = false;
     }
     void Update()
     {
@@ -22,8 +24,14 @@ public class Lever : MonoBehaviour
             on = true;
         }
         pipe.on = on;
-
-        
+    }
+    private void PlayMusic(){
+        if(on){
+            audioSource.enabled = true;
+        }
+        else{
+            audioSource.enabled = false;
+        }
     }
     
 }
