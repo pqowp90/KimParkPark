@@ -164,7 +164,7 @@ public class PlayerMove : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.gameObject.layer == 14){
+        if(collision.gameObject.layer == 15){
             isDouble = false;
             Debug.Log("³ª°¨");
             gameObject.layer = 0;
@@ -176,7 +176,7 @@ public class PlayerMove : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.layer == 14){
+        if(collision.gameObject.layer == 15){
             isDouble = true;
             Debug.Log("µé¾î¿È");
         }
