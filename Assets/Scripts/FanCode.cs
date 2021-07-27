@@ -14,6 +14,8 @@ public class FanCode : MonoBehaviour, IActive
     private Animator myAnimator;
     [SerializeField]
     private ParticleSystem sujunggi;
+    [SerializeField]
+    private float force=5f;
     void Start()
     {
         myAnimator = GetComponent<Animator>();
@@ -43,8 +45,8 @@ public class FanCode : MonoBehaviour, IActive
         radian = rotateDegree*Mathf.PI/180f;
         x =Mathf.Cos(radian);
         y =Mathf.Sin(radian);
-        rigid.AddForce(new Vector2(x,y)*Time.deltaTime*10000f);
-        rigid.velocity = new Vector2(Mathf.Clamp(rigid.velocity.x,-5f,5f),Mathf.Clamp(rigid.velocity.y,-5f,5f));
+        rigid.AddForce(new Vector2(x,y)*Time.deltaTime*2000*force);
+        rigid.velocity = new Vector2(Mathf.Clamp(rigid.velocity.x,-force,force),Mathf.Clamp(rigid.velocity.y,-5f,5f));
     }
     void IActive.Active(bool onon){
         on=onon;

@@ -2878,6 +2878,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fan
       objectReference: {fileID: 0}
+    - target: {fileID: 1595394292832564593, guid: 4f9a66d43de808c4b9c8905d029e6d43, type: 3}
+      propertyPath: force
+      value: 25.57
+      objectReference: {fileID: 0}
     - target: {fileID: 1595394292832564605, guid: 4f9a66d43de808c4b9c8905d029e6d43, type: 3}
       propertyPath: m_RootOrder
       value: 6
