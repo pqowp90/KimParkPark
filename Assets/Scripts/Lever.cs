@@ -7,10 +7,6 @@ public class Lever : MonoBehaviour
     [SerializeField]
     private Transform chook;
     public bool on;
-    void Start()
-    {
-        
-    }
 
     void Update()
     {

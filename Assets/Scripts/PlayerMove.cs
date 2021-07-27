@@ -10,7 +10,7 @@ public class PlayerMove : MonoBehaviour
     private float speed,nowSpeed,jumpPower,bottomchkDistance,jumpMaxTime,jumpingTime,rotateDegree,x,y,radian;
     private Rigidbody2D myRigidbody2D;
     [SerializeField]
-    private LayerMask g_layerMask;
+    private LayerMask g_layerMask , s_layerMask;
     [SerializeField]
     private Transform bottomChk;
     private Animator myAnimator;
@@ -75,7 +75,7 @@ public class PlayerMove : MonoBehaviour
         rotateDegree = Mathf.Atan2(target.y - oPosition.y, target.x - oPosition.x)*Mathf.Rad2Deg;
         
     }
-    private void Throwing(){
+    public void Throwing(){
         if(!flagPrefab.GetComponent<flag>().isHand)return;
         radian = rotateDegree*Mathf.PI/180f;
         x =Mathf.Cos(radian);
@@ -166,9 +166,9 @@ public class PlayerMove : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.gameObject.layer == 15){
+        if(collision.gameObject.layer == 20){
             isDouble = false;
-            Debug.Log("ï¿½ï¿½ï¿½ï¿½");
+            Debug.Log("³ª°¨");
             gameObject.layer = 0;
         }
         if(collision.gameObject.layer == 9){
@@ -178,9 +178,9 @@ public class PlayerMove : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.layer == 15){
+        if(collision.gameObject.layer == 20){
             isDouble = true;
-            Debug.Log("ï¿½ï¿½ï¿½ï¿½");
+            Debug.Log("µé¾î°¨");
         }
         if(collision.gameObject.layer == 9){
             ohohFlag = true;
