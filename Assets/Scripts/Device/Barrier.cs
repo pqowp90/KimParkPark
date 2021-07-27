@@ -7,7 +7,7 @@ public class Barrier : MonoBehaviour , IActive
     private void OnTriggerStay2D(Collider2D collision){
         Debug.Log("dd");
         collision.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        collision.transform.position -= (transform.position - collision.transform.localPosition)*0.2f;
+        collision.transform.position -= (transform.position - collision.transform.localPosition)*0.4f;
         collision.GetComponent<flag>().isLook = false;
         if(!collision.gameObject.GetComponentInParent<PlayerMove>())return;
         collision.gameObject.GetComponentInParent<PlayerMove>().Throwing();
