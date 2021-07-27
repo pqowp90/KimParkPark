@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5732716311076987135}
   - component: {fileID: 5732716311076987132}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: OnOffRed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59,7 +59,7 @@ GameObject:
   - component: {fileID: 5732716312195951103}
   - component: {fileID: 5732716312195951101}
   - component: {fileID: 5732716312195951100}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Redblock
   m_TagString: Untagged
   m_Icon: {fileID: 0}

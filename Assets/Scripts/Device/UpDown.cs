@@ -10,23 +10,51 @@ public class UpDown : MonoBehaviour, IActive
     private float y;
 
     private Rigidbody2D myRigidbody;
-
+    private IEnumerator upBlock,downBlock;
+    private bool isMove = false;
+    
     private void Awake()
     {
         if (!myRigidbody) myRigidbody = GetComponent<Rigidbody2D>();
     }
+    private void Start(){
+        upBlock = UpRigid();
+        downBlock = DownRigid();
+    }
     public void Active()
     {
-        Debug.Log(myRigidbody.velocity.y + speed);
-        //myRigidbody.velocity += new Vector2(myRigidbody.velocity.x, myRigidbody.velocity.y + speed);
-        transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x , transform.position.y+1f), 1f);
-        //transform.Translate(Vector2.up * speed * Time.deltaTime);
+        isMove = true;
+        StopCoroutine(downBlock);
+        StartCoroutine(UpRigid());
     }
     public void UnActive()
     {
-        Debug.Log(myRigidbody.velocity.y+ speed);
-        transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x , transform.position.y-1f), 1f);
-        //transform.Translate(Vector2.down * speed * Time.deltaTime);
+        isMove = true;
+        StopCoroutine(upBlock);
+        StartCoroutine(DownRigid());
     }
+    private IEnumerator UpRigid()
+    {
+        yield return new WaitUntil(() => isMove);
+        for (int i = 0; i < 30; i++)
+        {
+            myRigidbody.position = Vector2.Lerp(transform.position, new Vector2(transform.position.x , transform.position.y+1f), 0.1f);
+            yield return new WaitForSeconds(0.1f);
+        }
+        isMove = false;
+    }
+
+    private IEnumerator DownRigid()
+    {
+        yield return new WaitWhile(() => isMove);
+        for (int i = 0; i < 30; i++)
+        {
+            myRigidbody.position = Vector2.Lerp(transform.position, new Vector2(transform.position.x , transform.position.y-1f), 0.1f);
+            yield return new WaitForSeconds(0.1f);
+        }
+        isMove = false;
+    }
+
+
 
 }

@@ -8,8 +8,7 @@ public class Poortal : MonoBehaviour
     private GameObject poortal = null;
 
     public bool isPoortal = false;
-
-
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (isPoortal) return;
@@ -22,7 +21,7 @@ public class Poortal : MonoBehaviour
             else{
                 collision.gameObject.transform.parent.position = poortal.transform.position;
             }
-            Invoke("PoortalExit" , 0.1f);
+            Invoke("PoortalExit" , 0.6f);
 
         }
     }

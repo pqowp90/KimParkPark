@@ -10,6 +10,7 @@ public class flag : MonoBehaviour
     [SerializeField]
     private Collider2D myCollider2D;
     public bool isLook=false,isFloor,isHand;
+
     void Start()
     {
         myRigidbody2D = GetComponent<Rigidbody2D>();
@@ -34,4 +35,5 @@ public class flag : MonoBehaviour
         rotateDegree = Mathf.Atan2(myRigidbody2D.velocity.y, myRigidbody2D.velocity.x);
         transform.localEulerAngles = new Vector3(0, 0, (rotateDegree * 180) / Mathf.PI);
     }
+    
 }

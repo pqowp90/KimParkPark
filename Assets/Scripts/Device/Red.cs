@@ -11,12 +11,12 @@ public class Red : MonoBehaviour, IActive
 
     private bool isSetActive = false;
 
-    public void Active()
+    public void UnActive()
     {
         isSetActive = true;
         SetActive();
     }
-    public void UnActive()
+    public void Active()
     {
         isSetActive = false;
         SetActive();
