@@ -13,15 +13,16 @@ public class PlayerMove : MonoBehaviour
     private LayerMask g_layerMask;
     [SerializeField]
     private Transform bottomChk;
+    private Animator myAnimator;
     public bool isGround,isJumping,isBack;
     private Vector2 oPosition;
     [SerializeField]
     private GameObject flagPrefab;
     private float currentVelocity=0;
     public static GameObject _player;
-    public float fallDistance = 20;
+    public float fallDistance = 20,flagStrength;
     public float maxPosition = 0;
-    private bool isDamaged = false;
+    private bool isDamaged = false,isCharging;
     
     private PlayerHPUI playerHpUI;
     // Start is called before the first frame update
@@ -29,6 +30,8 @@ public class PlayerMove : MonoBehaviour
     {
         _player = gameObject;
         myRigidbody2D = GetComponent<Rigidbody2D>();
+        playerHpUI = FindObjectOfType<PlayerHPUI>();
+        myAnimator = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -39,6 +42,29 @@ public class PlayerMove : MonoBehaviour
         fallDamaged();
         HeadRotation(Camera.main.ScreenToWorldPoint(Input.mousePosition));
         if(Input.GetKeyDown(KeyCode.W)){
+            Throwing();
+        }
+        FalgCharging();
+    }
+    private void FalgCharging(){
+        if(Input.GetMouseButtonDown(0)){
+            myAnimator.SetTrigger("boom");
+            
+            
+            flagStrength = 0f;
+            isCharging = true;
+            myAnimator.SetBool("IsCharging",isCharging);
+        }
+        if(Input.GetMouseButton(0)){
+            myAnimator.SetFloat("Blend",flagStrength);
+            flagStrength += Time.deltaTime;
+            flagStrength=Mathf.Clamp(flagStrength,0f,3f);
+            isBack = (transform.position.x - Camera.main.ScreenToWorldPoint(Input.mousePosition).x<0);
+            transform.rotation = Quaternion.Euler(0f,(isBack)?0f:180f,0f);
+        }
+        if(Input.GetMouseButtonUp(0)){
+            isCharging = false;
+            myAnimator.SetBool("IsCharging",isCharging);
             Throwing();
         }
     }
@@ -55,7 +81,7 @@ public class PlayerMove : MonoBehaviour
         flag.transform.position = transform.position;
         flag.transform.rotation = Quaternion.Euler(0f,0f,rotateDegree);
         flag.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-        flag.GetComponent<Rigidbody2D>().velocity = new Vector2(x*10f,y*10f);
+        flag.GetComponent<Rigidbody2D>().velocity = new Vector2(x,y)*flagStrength*5f;
         flag.GetComponent<flag>().isLook=true;
 
     }
