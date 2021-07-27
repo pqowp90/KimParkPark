@@ -16,7 +16,7 @@ public class Barrier : MonoBehaviour , IActive
         collision.gameObject.transform.parent.GetComponent<PlayerMove>().Throwing();
     }
     
-    public void Active(bool onOff){
-        gameObject.SetActive(onOff);
+    void IActive.Active(bool onOff){
+        transform.parent.gameObject.SetActive(onOff);
     }
 }
