@@ -33,6 +33,7 @@ public class ButtonManager : MonoBehaviour
         Application.Quit();
     }
     public void OnClickSetting(){
+        if(isSetting)return;
         isSetting = true;
         settingCanvas.enabled = true;
         settingButtons.enabled = true;
@@ -40,7 +41,7 @@ public class ButtonManager : MonoBehaviour
         titleButton.enabled = false;
     }
     public void OnClickStart(){
-        SceneManager.LoadScene("Main");
+        SceneManager.LoadScene("Wasabe");
     }
     public void OnClickSettingExit(){
         isSetting = false;

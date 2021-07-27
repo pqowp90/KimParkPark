@@ -9,10 +9,13 @@ public class OnOffBlock : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     [SerializeField]
     private Sprite[] sprites=new Sprite[2];
+    [SerializeField]
+    private AudioSource audioSource;
     private Pipe pipe;
     void Start(){
         pipe = GetComponentInChildren<Pipe>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        audioSource.enabled = false;
     }
     private void OnTriggerEnter2D(Collider2D collider2D){
         if((collider2D.gameObject.layer == 9)&&!isTouch){
@@ -22,6 +25,7 @@ public class OnOffBlock : MonoBehaviour
             }else{
                 on = true;
             }
+            PlayMusic();
             spriteRenderer.sprite = sprites[(on)?1:0];
             Invoke("OffTouch" , 0.5f);
         }
@@ -31,6 +35,14 @@ public class OnOffBlock : MonoBehaviour
     }
     private void OffTouch(){
         isTouch = false;
+    }
+    private void PlayMusic(){
+        if(on){
+            audioSource.enabled = true;
+        }
+        else{
+            audioSource.enabled = false;
+        }
     }
     
 }

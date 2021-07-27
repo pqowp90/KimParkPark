@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 902241116092071902}
   - component: {fileID: 902241116092071889}
   - component: {fileID: 902241116092071900}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Thorn(down)
   m_TagString: Thorn
   m_Icon: {fileID: 0}
@@ -96,7 +96,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c87cb500c281754bb229de8604e219a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  originalPos: {fileID: 0}
   down: 0
 --- !u!61 &902241116092071900
 BoxCollider2D:
