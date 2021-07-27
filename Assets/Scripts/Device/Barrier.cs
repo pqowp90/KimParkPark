@@ -4,19 +4,17 @@ using UnityEngine;
 
 public class Barrier : MonoBehaviour , IActive
 {
-    [SerializeField]
-    private Transform flagPos;
     private void OnTriggerStay2D(Collider2D collision){
-        if(collision.gameObject.layer == 8){
-            collision.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            collision.gameObject.transform.position = new Vector2(flagPos.position.x , flagPos.position.y);
-        }
-        if(!collision.gameObject.transform.parent)return;
-        if(!collision.gameObject.transform.parent.GetComponent<PlayerMove>())return;
-        collision.gameObject.transform.parent.GetComponent<PlayerMove>().Throwing();
+        Debug.Log("dd");
+        collision.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        collision.transform.position -= (transform.position - collision.transform.localPosition)*0.2f;
+        collision.GetComponent<flag>().isLook = false;
+        if(!collision.gameObject.GetComponentInParent<PlayerMove>())return;
+        collision.gameObject.GetComponentInParent<PlayerMove>().Throwing();
+        
     }
     
     public void Active(bool onOff){
-        gameObject.SetActive(onOff);
+        transform.GetChild(0).gameObject.SetActive(onOff);
     }
 }
