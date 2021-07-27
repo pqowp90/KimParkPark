@@ -155,7 +155,7 @@ public class PlayerMove : MonoBehaviour
         BottomChk();
         if(isGround)
         {
-            if (maxPosition - transform.position.y > 7)
+            if (maxPosition - transform.position.y > 10)
             {
                 if (isDamaged) return;
                 Debug.Log("Damage");
