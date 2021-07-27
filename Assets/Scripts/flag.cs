@@ -33,10 +33,8 @@ public class flag : MonoBehaviour
         isLook = false;
         myRigidbody2D.velocity = Vector2.zero;
         transform.DORotateQuaternion(Quaternion.Euler(0f,0f,-90f),0.5f);
-        if(collision.gameObject.CompareTag("Bottom")){
-            isFloor = true;
-            lastPos = transform.position;
-        }
+        isFloor = true;
+        lastPos = transform.position;
     }
     
     
