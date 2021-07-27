@@ -6,6 +6,9 @@ public class FanCode : MonoBehaviour, IActive
 {
     private float radian,rotateDegree,x,y;
     public bool on;
+    public GameObject distans;
+        
+    
     [SerializeField]
     private GameObject[] onOnOn = new GameObject[2];
     private Animator myAnimator;
@@ -18,6 +21,7 @@ public class FanCode : MonoBehaviour, IActive
     
     void Update()
     {
+        sujunggi.startLifetime = distans.transform.localScale.y*0.13f;
         for(int i=0;i<onOnOn.Length;i++){
             onOnOn[i].SetActive(on);
         }
@@ -28,6 +32,7 @@ public class FanCode : MonoBehaviour, IActive
         else if(!sujunggi.isPlaying&&on){
             sujunggi.Play();
         }
+        
     }
     void OnTriggerStay2D(Collider2D collider2D){
         
@@ -43,10 +48,8 @@ public class FanCode : MonoBehaviour, IActive
     }
     void IActive.Active(){
         on=true;
-        sujunggi.Play();
     }
     void IActive.UnActive(){
         on=false;
-        sujunggi.Stop();
     }
 }
