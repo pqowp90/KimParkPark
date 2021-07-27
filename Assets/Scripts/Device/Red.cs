@@ -6,26 +6,21 @@ public class Red : MonoBehaviour, IActive
 {
     [SerializeField]
     private GameObject[] red;
-    [SerializeField]
-    private int maxRed;
 
+    private int maxRed;
     private bool isSetActive = false;
 
-    public void UnActive()
+    public void Active(bool onOff)
     {
-        isSetActive = true;
-        SetActive();
+        maxRed = gameObject.transform.childCount;
+        isSetActive = onOff;
+        SetActive(onOff);
     }
-    public void Active()
-    {
-        isSetActive = false;
-        SetActive();
-    }
-    private void SetActive()
+    private void SetActive(bool onOff)
     {
         for (int i = 0; i < maxRed; i++)
         {
-            red[i].SetActive(isSetActive);
+            red[i].SetActive(onOff);
         }
     }
 }

@@ -13,10 +13,10 @@ public class Presser : MonoBehaviour
         active = things.GetComponent<IActive>();
     }
     private void OnTriggerEnter2D(Collider2D collision){
-        active.Active(); // on
+        active.Active(true); // on
     }
     private void OnTriggerExit2D(Collider2D collision){
-        active.UnActive(); // off
+        active.Active(false); // off
     }
 
 }

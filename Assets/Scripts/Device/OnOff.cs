@@ -12,6 +12,7 @@ public class OnOff : MonoBehaviour
     private IActive active;
     private bool isOn = true; 
     private bool isTouch = false;
+    private bool onOff = false;
     
     // private void OnTriggerEnter2D(Collider2D collision){
     //     if(isTouch)return;
@@ -28,26 +29,21 @@ public class OnOff : MonoBehaviour
             Debug.Log("À×");
             isTouch = true;
             if(isOn){
-                Active();
+                Active(!isOn);
                 isOn = false;
             }
-            else if(!isOn){
-                UnActive();
+            else if(!isOn)
+            {
+                Active(!isOn);
                 isOn = true;
             }
             Invoke("OffTouch" , 0.5f);
         }
     }
-    private void Active(){
+    private void Active(bool onOff){
         for(int i = 0 ; i < maxObjectCount; i++){
             active = things[i].GetComponent<IActive>();
-            active.Active();
-        }
-    }
-    private void UnActive(){
-        for(int i = 0 ; i<maxObjectCount ; i++){
-            active = things[i].GetComponent<IActive>();
-            active.UnActive();
+            active.Active(onOff);
         }
     }
     private void OffTouch(){
