@@ -21,6 +21,8 @@ public class Lever : MonoBehaviour
         }
     }
     void OnTriggerStay2D(Collider2D collider2D){
+        if(collider2D.GetComponent<IActive>()==null)return;
+        Debug.Log(collider2D.gameObject.name);
         collider2D.GetComponent<IActive>().Active(on);
     }
 }
