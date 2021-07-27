@@ -24,6 +24,7 @@ public class MainButtonManager : MonoBehaviour
         Application.Quit();
     }
     public void OnClickSetting(){
+        if(isSetting)return;
         isSetting = true;
         settingCanvas.enabled = true;
         settingButtons.enabled = true;

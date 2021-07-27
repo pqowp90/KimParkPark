@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class PlayerMove : MonoBehaviour
 {
@@ -55,7 +56,7 @@ public class PlayerMove : MonoBehaviour
         }
     }
     private void FalgCharging(){
-        if(Input.GetMouseButtonDown(0)){
+        if(Input.GetMouseButtonDown(0)&&!EventSystem.current.IsPointerOverGameObject()){
             if(!flagPrefab.GetComponent<flag>().isHand)return;
             myAnimator.SetTrigger("boom");
             
@@ -184,7 +185,7 @@ public class PlayerMove : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.gameObject.layer == 15){
+        if(collision.gameObject.layer == 21){
             isDouble = false;
             Debug.Log("����");
             gameObject.layer = 0;
