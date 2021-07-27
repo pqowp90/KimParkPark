@@ -1480,6 +1480,7 @@ MonoBehaviour:
   settingButtons: {fileID: 876485992}
   titleCanvas: {fileID: 234277558}
   titleButton: {fileID: 1625962752}
+  buttonCanvas: {fileID: 872043611}
 --- !u!1 &857700980
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,14 +7,14 @@ public class Lever : MonoBehaviour
     [SerializeField]
     private Transform chook;
     [SerializeField]
-    private bool on;
+    private bool on , isTouch;
     private Pipe pipe;
-    [SerializeField]
-    private AudioSource audioSource;
-
+    [SerializeField]    
+    private AudioSource[] audioSource;
     void Start(){
         pipe = GetComponentInChildren<Pipe>();
-        audioSource.enabled = false;
+        audioSource[0].enabled = false;
+        audioSource[1].enabled = false;
     }
     void Update()
     {
@@ -23,15 +23,24 @@ public class Lever : MonoBehaviour
         } if(chook.rotation.z<0f&&!on){
             on = true;
         }
+        PlayMusic();
         pipe.on = on;
     }
     private void PlayMusic(){
+        MusicSound();
         if(on){
-            audioSource.enabled = true;
+            audioSource[0].enabled = true;
+            audioSource[1].enabled = false;
+            isTouch = true;
         }
-        else{
-            audioSource.enabled = false;
+        else {
+            if(!isTouch)return;
+            audioSource[1].enabled =true;
+            audioSource[0].enabled = false;
         }
     }
-    
+    private void MusicSound(){
+        audioSource[0].volume = PlayerPrefs.GetFloat("Volume",1f);
+        audioSource[1].volume = PlayerPrefs.GetFloat("Volume",1f);
+    }
 }

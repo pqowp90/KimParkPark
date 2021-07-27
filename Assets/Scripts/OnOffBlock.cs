@@ -15,7 +15,6 @@ public class OnOffBlock : MonoBehaviour
     void Start(){
         pipe = GetComponentInChildren<Pipe>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        audioSource.enabled = false;
     }
     private void OnTriggerEnter2D(Collider2D collider2D){
         if((collider2D.gameObject.layer == 9)&&!isTouch){
@@ -25,24 +24,20 @@ public class OnOffBlock : MonoBehaviour
             }else{
                 on = true;
             }
-            PlayMusic();
+            audioSource.Play();
             spriteRenderer.sprite = sprites[(on)?1:0];
             Invoke("OffTouch" , 0.5f);
         }
     }
     void Update(){
+        MusicSound();
         pipe.on = on;
     }
     private void OffTouch(){
         isTouch = false;
     }
-    private void PlayMusic(){
-        if(on){
-            audioSource.enabled = true;
-        }
-        else{
-            audioSource.enabled = false;
-        }
+    private void MusicSound(){
+        audioSource.volume = PlayerPrefs.GetFloat("Volume",1f);
     }
     
 }

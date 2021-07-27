@@ -18,6 +18,9 @@ public class ButtonManager : MonoBehaviour
     private Canvas titleCanvas = null;
     [SerializeField]
     private Canvas titleButton = null;
+    [Header("¹öÆ°")]
+    [SerializeField]
+    private Canvas buttonCanvas = null;
 
     private bool isSetting = false;
 
@@ -37,6 +40,7 @@ public class ButtonManager : MonoBehaviour
         isSetting = true;
         settingCanvas.enabled = true;
         settingButtons.enabled = true;
+        buttonCanvas.enabled = false;
         titleCanvas.enabled = false;
         titleButton.enabled = false;
     }
@@ -47,6 +51,7 @@ public class ButtonManager : MonoBehaviour
         isSetting = false;
         settingCanvas.enabled = false;
         settingButtons.enabled = false;
+        buttonCanvas.enabled = true;
         titleButton.enabled = true;
         titleCanvas.enabled = true;
     }
