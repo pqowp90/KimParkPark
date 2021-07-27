@@ -122,11 +122,11 @@ public class PlayerMove : MonoBehaviour
         BottomChk();
         if(isGround)
         {
-            if (maxPosition - transform.position.y > 5)
+            if (maxPosition - transform.position.y > 7)
             {
                 if (isDamaged) return;
+                Debug.Log("Damage");
                 isDamaged = true;
-                playerHpUI.FallDamaged();
             }
             maxPosition = 0;
         }
@@ -139,8 +139,9 @@ public class PlayerMove : MonoBehaviour
                 maxPosition = transform.position.y;
             }
         }
-        if(_player!=null&&playerHpUI!=null)
-            playerHpUI.PlayerDead(_player);
+        //if (_player != null && playerHpUI != null)
+        //{
+        //}
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -148,7 +149,6 @@ public class PlayerMove : MonoBehaviour
         if(collision.CompareTag("Thorn"))
         {
             _player.SetActive(false);
-            Time.timeScale = 0;
         }
     }
 }
