@@ -11,12 +11,15 @@ public class Blue : MonoBehaviour, IActive
 
     private bool isSetActive = false;
 
-    public void Active()
+    private void Start(){
+        UnActive();
+    }
+    public void UnActive()
     {
         isSetActive = false;
         SetActive();
     }
-    public void UnActive()
+    public void Active()
     {
         isSetActive = true;
         SetActive();

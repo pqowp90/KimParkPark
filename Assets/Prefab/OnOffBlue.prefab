@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6863912183291296791}
   - component: {fileID: 6863912183291296790}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: OnOffBlue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59,7 +59,7 @@ GameObject:
   - component: {fileID: 6863912184187167050}
   - component: {fileID: 6863912184187167052}
   - component: {fileID: 6863912184187167053}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: blueblock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
