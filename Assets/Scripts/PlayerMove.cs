@@ -109,6 +109,7 @@ public class PlayerMove : MonoBehaviour
     }
     private void Jump(){
         if(Input.GetButtonDown("Jump")&&isGround){
+            myAnimator.SetTrigger("Jump");
             isJumping=true;
             jumpingTime=0f;
         }
@@ -116,6 +117,7 @@ public class PlayerMove : MonoBehaviour
             jumpingTime+=Time.deltaTime;
         if(Input.GetButton("Jump")&&isJumping&&jumpingTime<jumpMaxTime){
             myRigidbody2D.velocity = new Vector2(myRigidbody2D.velocity.x,jumpPower-jumpingTime*7f);
+            
         }
         if(Input.GetButtonUp("Jump")){
             isDouble = false;
@@ -128,6 +130,8 @@ public class PlayerMove : MonoBehaviour
         if(!isDouble){
             int layerMask =  (1 << LayerMask.NameToLayer("Bottom"))+(1 << LayerMask.NameToLayer("Bottom2"));
             isGround = Physics2D.Raycast(bottomChk.position,((isBack)?Vector3.right:Vector3.left) * bottomchkDistance, bottomchkDistance,layerMask);
+            myAnimator.SetBool("IsGround",isGround);
+            myAnimator.SetFloat("Yvel",myRigidbody2D.velocity.y);
             // isGround = Physics2D.Raycast(bottomChk.position,((isBack)?Vector3.right:Vector3.left) * bottomchkDistance, bottomchkDistance,g_layerMask[0])||
             // Physics2D.Raycast(bottomChk.position,((isBack)?Vector3.right:Vector3.left) * bottomchkDistance, bottomchkDistance,g_layerMask[1]);
         
@@ -140,6 +144,7 @@ public class PlayerMove : MonoBehaviour
     private void Move(){
         nowSpeed = speed*((!isCharging)?1f:0.1f);
         hori = Input.GetAxisRaw("Horizontal");
+        myAnimator.SetInteger("Hori",(int)hori);
         if(hori==0){
             Xrate = 9f;
         }else{
