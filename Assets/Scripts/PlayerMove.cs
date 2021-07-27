@@ -14,7 +14,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField]
     private Transform bottomChk;
     private Animator myAnimator;
-    public bool isGround,isJumping,isBack;
+    public bool isGround,isJumping,isBack , isDouble;
     private Vector2 oPosition;
     [SerializeField]
     private GameObject flagPrefab,hand;
@@ -107,13 +107,20 @@ public class PlayerMove : MonoBehaviour
             myRigidbody2D.velocity = new Vector2(myRigidbody2D.velocity.x,jumpPower-jumpingTime*7f);
         }
         if(Input.GetButtonUp("Jump")){
+            isDouble = false;
             isJumping=false;
             jumpingTime=0f;
         }
     }
     void BottomChk(){
         Debug.DrawRay(bottomChk.position, ((isBack)?Vector3.right:Vector3.left)*bottomchkDistance, Color.blue);
+        if(!isDouble){
 		isGround = Physics2D.Raycast(bottomChk.position,((isBack)?Vector3.right:Vector3.left) * bottomchkDistance, bottomchkDistance,g_layerMask);
+        }
+        else{
+            isGround = true;
+        }
+
     }
     private void Move(){
         nowSpeed = speed*((!isCharging)?1f:0.1f);
@@ -157,6 +164,11 @@ public class PlayerMove : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
+        if(collision.gameObject.layer == 15){
+            isDouble = false;
+            Debug.Log("³ª°¨");
+            gameObject.layer = 0;
+        }
         if(collision.gameObject.layer == 9){
             ohohFlag = false;
         }
@@ -164,6 +176,10 @@ public class PlayerMove : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if(collision.gameObject.layer == 15){
+            isDouble = true;
+            Debug.Log("µé¾î¿È");
+        }
         if(collision.gameObject.layer == 9){
             ohohFlag = true;
         }
