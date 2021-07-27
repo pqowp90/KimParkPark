@@ -10,6 +10,7 @@ public class flag : MonoBehaviour
     [SerializeField]
     private Collider2D myCollider2D;
     public bool isLook=false,isFloor,isHand;
+    public Vector2 lastPos;
 
     void Start()
     {
@@ -30,10 +31,13 @@ public class flag : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision){
         if(isHand)return;
         isLook = false;
-        isFloor = true;
         myRigidbody2D.velocity = Vector2.zero;
         transform.DORotateQuaternion(Quaternion.Euler(0f,0f,-90f),0.5f);
+        isFloor = true;
+        lastPos = transform.position;
     }
+    
+    
     private void FlagRotation(){
         rotateDegree = Mathf.Atan2(myRigidbody2D.velocity.y, myRigidbody2D.velocity.x);
         transform.localEulerAngles = new Vector3(0, 0, (rotateDegree * 180) / Mathf.PI);
