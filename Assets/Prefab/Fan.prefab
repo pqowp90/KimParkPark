@@ -159,7 +159,7 @@ MonoBehaviour:
   onOnOn:
   - {fileID: 1595394293799442435}
   sujunggi: {fileID: 1595394294384588721}
-  force: 5
+  force: 25.57
 --- !u!95 &1595394292832564606
 Animator:
   serializedVersion: 3
