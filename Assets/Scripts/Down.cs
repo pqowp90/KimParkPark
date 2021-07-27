@@ -7,7 +7,7 @@ public class Down : MonoBehaviour
     public float down;
     void Start()
     {
-        down = 6f;
+        down = transform.position.y;
     }
 
     void Update()
@@ -17,6 +17,6 @@ public class Down : MonoBehaviour
     private void DownThron()
     {
         down -= Time.deltaTime/2f;
-        transform.position = new Vector3(0f, down, 0f);
+        transform.position = new Vector3(transform.position.x, down,transform.position.z);
     }
 }

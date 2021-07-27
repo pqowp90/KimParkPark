@@ -82,7 +82,7 @@ public class PlayerMove : MonoBehaviour
         rotateDegree = Mathf.Atan2(target.y - oPosition.y, target.x - oPosition.x)*Mathf.Rad2Deg;
         
     }
-    private void Throwing(){
+    public void Throwing(){
         if(!flagPrefab.GetComponent<flag>().isHand)return;
         radian = rotateDegree*Mathf.PI/180f;
         x =Mathf.Cos(radian);

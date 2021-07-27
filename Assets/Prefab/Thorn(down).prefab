@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 902241116092071889}
   - component: {fileID: 902241116092071900}
   m_Layer: 0
-  m_Name: Thorn
+  m_Name: Thorn(down)
   m_TagString: Thorn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
