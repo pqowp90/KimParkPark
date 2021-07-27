@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class PlayerMove : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField]
     private Transform bottomChk;
     private Animator myAnimator;
-    public bool isGround,isJumping,isBack , isDouble;
+    public bool isGround,isJumping,isBack , isDouble , isPause;
     private Vector2 oPosition;
     [SerializeField]
     private GameObject flagPrefab,hand;
@@ -37,6 +38,7 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(isPause)return;
         Move();
         Jump();
         BottomChk();
@@ -55,7 +57,7 @@ public class PlayerMove : MonoBehaviour
         }
     }
     private void FalgCharging(){
-        if(Input.GetMouseButtonDown(0)){
+        if(Input.GetMouseButtonDown(0)&&!EventSystem.current.IsPointerOverGameObject()){
             if(!flagPrefab.GetComponent<flag>().isHand)return;
             myAnimator.SetTrigger("boom");
             
@@ -184,7 +186,7 @@ public class PlayerMove : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.gameObject.layer == 15){
+        if(collision.gameObject.layer == 21){
             isDouble = false;
             Debug.Log("����");
             gameObject.layer = 0;
@@ -196,7 +198,7 @@ public class PlayerMove : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.layer == 15){
+        if(collision.gameObject.layer == 21){
             isDouble = true;
             Debug.Log("����");
         }

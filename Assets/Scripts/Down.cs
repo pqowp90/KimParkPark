@@ -34,10 +34,8 @@ public class Down : MonoBehaviour
     // }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-            Debug.Log("우하하핳");
         if (collision.gameObject.layer == 12 || collision.gameObject.layer == 6)
         {
-            Debug.Log("잉");
             down = originalPos;
         }
     }

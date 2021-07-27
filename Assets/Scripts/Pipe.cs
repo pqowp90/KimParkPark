@@ -6,6 +6,8 @@ public class Pipe : MonoBehaviour
 {
     public bool on;
     private IActive active;
+
+    
     void OnTriggerStay2D(Collider2D collider2D){
         active=collider2D.GetComponent<IActive>();
         if(active==null){
@@ -16,4 +18,6 @@ public class Pipe : MonoBehaviour
         }
         active.Active(on);
     }
+
+    
 }

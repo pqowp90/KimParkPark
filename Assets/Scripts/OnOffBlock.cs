@@ -9,6 +9,8 @@ public class OnOffBlock : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     [SerializeField]
     private Sprite[] sprites=new Sprite[2];
+    [SerializeField]
+    private AudioSource audioSource;
     private Pipe pipe;
     void Start(){
         pipe = GetComponentInChildren<Pipe>();
@@ -22,15 +24,20 @@ public class OnOffBlock : MonoBehaviour
             }else{
                 on = true;
             }
+            audioSource.Play();
             spriteRenderer.sprite = sprites[(on)?1:0];
             Invoke("OffTouch" , 0.5f);
         }
     }
     void Update(){
+        MusicSound();
         pipe.on = on;
     }
     private void OffTouch(){
         isTouch = false;
+    }
+    private void MusicSound(){
+        audioSource.volume = PlayerPrefs.GetFloat("Volume",1f);
     }
     
 }
