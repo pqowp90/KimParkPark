@@ -4,15 +4,33 @@ using UnityEngine;
 
 public class OnOffBlock : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    public bool on;
+    private bool isTouch = false;
+    private SpriteRenderer spriteRenderer;
+    [SerializeField]
+    private Sprite[] sprites=new Sprite[2];
+    private Pipe pipe;
+    void Start(){
+        pipe = GetComponentInChildren<Pipe>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+    private void OnTriggerEnter2D(Collider2D collider2D){
+        if((collider2D.gameObject.layer == 9)&&!isTouch){
+            isTouch = true;
+            if(on){
+                on=false;
+            }else{
+                on = true;
+            }
+            spriteRenderer.sprite = sprites[(on)?1:0];
+            Invoke("OffTouch" , 0.5f);
+        }
     }
+    void Update(){
+        pipe.on = on;
+    }
+    private void OffTouch(){
+        isTouch = false;
+    }
+    
 }

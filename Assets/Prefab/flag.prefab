@@ -525,7 +525,8 @@ MonoBehaviour:
   myCollider2D: {fileID: 13552540813966216}
   isLook: 0
   isFloor: 0
-  isHand: 0
+  isHand: 1
+  lastPos: {x: 0, y: 0}
 --- !u!114 &2456246458675391175
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -564,7 +565,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7032531827725310711}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0, y: 0.01, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7032531827420406267}
