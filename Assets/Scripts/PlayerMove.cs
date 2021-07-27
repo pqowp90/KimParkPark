@@ -15,7 +15,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField]
     private Transform bottomChk;
     private Animator myAnimator;
-    public bool isGround,isJumping,isBack , isDouble;
+    public bool isGround,isJumping,isBack , isDouble , isPause;
     private Vector2 oPosition;
     [SerializeField]
     private GameObject flagPrefab,hand;
@@ -38,6 +38,7 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(isPause)return;
         Move();
         Jump();
         BottomChk();
