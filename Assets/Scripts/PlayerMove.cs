@@ -10,7 +10,7 @@ public class PlayerMove : MonoBehaviour
     private float speed,nowSpeed,jumpPower,bottomchkDistance,jumpMaxTime,jumpingTime,rotateDegree,x,y,radian;
     private Rigidbody2D myRigidbody2D;
     [SerializeField]
-    private LayerMask g_layerMask;
+    private LayerMask[] g_layerMask = new LayerMask[2];
     [SerializeField]
     private Transform bottomChk;
     private Animator myAnimator;
@@ -45,6 +45,13 @@ public class PlayerMove : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.F)&&ohohFlag){
             FlagPickUp();
         }
+        if(Input.GetKeyDown(KeyCode.Q)){
+            if(!flagPrefab.GetComponent<flag>().isFloor){
+                transform.position = flagPrefab.GetComponent<flag>().lastPos;
+                return;
+            }
+            transform.position = flagPrefab.transform.position;
+        }
     }
     private void FalgCharging(){
         if(Input.GetMouseButtonDown(0)){
@@ -64,6 +71,7 @@ public class PlayerMove : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f,(isBack)?0f:180f,0f);
         }
         if(Input.GetMouseButtonUp(0)){
+            if(!isCharging)return;
             isCharging = false;
             myAnimator.SetBool("IsCharging",isCharging);
             Throwing();
@@ -84,11 +92,13 @@ public class PlayerMove : MonoBehaviour
         flagPrefab.transform.rotation = Quaternion.Euler(0f,0f,rotateDegree);
         flagPrefab.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
         flagPrefab.GetComponent<Rigidbody2D>().velocity = new Vector2(x,y)*flagStrength*5f;
-        flagPrefab.GetComponent<flag>().isLook=true;
-        flagPrefab.GetComponent<flag>().isHand = false;
+        flag flagScript = flagPrefab.GetComponent<flag>();
+        flagScript.isLook=true;
+        flagScript.isHand = false;
     }
     private void FlagPickUp(){
         flagPrefab.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+        flagPrefab.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         flagPrefab.transform.SetParent(hand.transform);
         flagPrefab.GetComponent<flag>().isFloor = false;
         flagPrefab.GetComponent<flag>().isLook=false;
@@ -115,7 +125,11 @@ public class PlayerMove : MonoBehaviour
     void BottomChk(){
         Debug.DrawRay(bottomChk.position, ((isBack)?Vector3.right:Vector3.left)*bottomchkDistance, Color.blue);
         if(!isDouble){
-		isGround = Physics2D.Raycast(bottomChk.position,((isBack)?Vector3.right:Vector3.left) * bottomchkDistance, bottomchkDistance,g_layerMask);
+            int layerMask = (1 << LayerMask.NameToLayer("sangho")) + (1 << LayerMask.NameToLayer("Bottom"));
+            isGround = Physics2D.Raycast(bottomChk.position,((isBack)?Vector3.right:Vector3.left) * bottomchkDistance, bottomchkDistance,layerMask);
+            // isGround = Physics2D.Raycast(bottomChk.position,((isBack)?Vector3.right:Vector3.left) * bottomchkDistance, bottomchkDistance,g_layerMask[0])||
+            // Physics2D.Raycast(bottomChk.position,((isBack)?Vector3.right:Vector3.left) * bottomchkDistance, bottomchkDistance,g_layerMask[1]);
+        
         }
         else{
             isGround = true;
@@ -166,7 +180,7 @@ public class PlayerMove : MonoBehaviour
     {
         if(collision.gameObject.layer == 15){
             isDouble = false;
-            Debug.Log("³ª°¨");
+            Debug.Log("ï¿½ï¿½ï¿½ï¿½");
             gameObject.layer = 0;
         }
         if(collision.gameObject.layer == 9){
@@ -178,7 +192,7 @@ public class PlayerMove : MonoBehaviour
     {
         if(collision.gameObject.layer == 15){
             isDouble = true;
-            Debug.Log("µé¾î¿È");
+            Debug.Log("ï¿½ï¿½ï¿½ï¿½");
         }
         if(collision.gameObject.layer == 9){
             ohohFlag = true;
