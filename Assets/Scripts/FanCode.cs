@@ -31,7 +31,7 @@ public class FanCode : MonoBehaviour, IActive
         for (int i = 0; i < onOnOn.Length; i++)
         {
             onOnOn[i].SetActive(on);
-            PlayMusic();
+            //PlayMusic();
         }
         myAnimator.SetBool("IsOn", on);
         if (sujunggi.isPlaying && !on)
@@ -61,15 +61,15 @@ public class FanCode : MonoBehaviour, IActive
     {
         on = onon;
     }
-    private void PlayMusic()
-    {
-        if (on)
-        {
-            audioSource.enabled = true;
-        }
-        else
-        {
-            audioSource.enabled = false;
-        }
-    }
+    //private void PlayMusic()
+    //{
+    //    if (on)
+    //    {
+    //        audioSource.enabled = true;
+    //    }
+    //    else
+    //    {
+    //        audioSource.enabled = false;
+    //    }
+    //}
 }

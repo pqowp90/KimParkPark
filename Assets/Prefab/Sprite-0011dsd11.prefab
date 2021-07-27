@@ -122,7 +122,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0.052059174, y: 0.07608247}
-  m_ConnectedAnchor: {x: -7.4095902, y: -3.7891192}
+  m_ConnectedAnchor: {x: 63.280407, y: -145.55511}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -487,16 +487,16 @@ Tilemap:
       e12: 2e-44
       e13: 2e-44
       e20: 4.6835985e-33
-      e21: 3.7598045e-23
-      e22: -0.0000000037766377
-      e23: 3.7598045e-23
+      e21: 2.6587875e+29
+      e22: -0.0000000036197054
+      e23: 2.6587875e+29
       e30: 4.5905e-41
-      e31: 7.23e-43
+      e31: 7.24e-43
       e32: 7.22e-43
-      e33: 7.23e-43
+      e33: 7.24e-43
   m_TileColorArray:
   - m_RefCount: 0
-    m_Data: {r: 3.7595722e-23, g: 3.7595722e-23, b: 3.7595722e-23, a: 3.7595722e-23}
+    m_Data: {r: 2.658721e+29, g: 2.658721e+29, b: 2.658721e+29, a: 2.658721e+29}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 0.8207547, g: 0.8207547, b: 0.8207547, a: 1}
