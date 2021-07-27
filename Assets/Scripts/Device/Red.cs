@@ -4,23 +4,13 @@ using UnityEngine;
 
 public class Red : MonoBehaviour, IActive
 {
-    [SerializeField]
-    private GameObject[] red;
-
-    private int maxRed;
-    private bool isSetActive = false;
-
-    public void Active(bool onOff)
-    {
-        maxRed = gameObject.transform.childCount;
-        isSetActive = onOff;
-        SetActive(onOff);
+    private GameObject myChild;
+    void Start(){
+        myChild = transform.GetChild(0).gameObject;
     }
-    private void SetActive(bool onOff)
+    void IActive.Active(bool on)
     {
-        for (int i = 0; i < maxRed; i++)
-        {
-            red[i].SetActive(onOff);
-        }
+        myChild.SetActive(on);
+        
     }
 }

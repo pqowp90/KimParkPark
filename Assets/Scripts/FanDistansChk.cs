@@ -18,7 +18,7 @@ public class FanDistansChk : MonoBehaviour
         if(!iswoho){
             transform.localScale += Vector3.up*0.1f;
         }
-        transform.localScale = new Vector3(transform.localScale.x,Mathf.Clamp(transform.localScale.y,0f,maxDistans),1f);
+        transform.localScale = new Vector3(transform.localScale.x,Mathf.Clamp(transform.localScale.y,0.1f,maxDistans),1f);
         fanCode.distans.transform.localScale = transform.localScale;
     }
     void OnTriggerStay2D(Collider2D collider2D){

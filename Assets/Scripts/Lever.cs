@@ -6,23 +6,24 @@ public class Lever : MonoBehaviour
 {
     [SerializeField]
     private Transform chook;
-    public bool on;
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    private bool on;
+    private Pipe pipe;
 
+
+    void Start(){
+        pipe = GetComponentInChildren<Pipe>();
+    }
     void Update()
     {
         if(chook.rotation.z>0f&&on){
             on = false;
-        }else if(chook.rotation.z<0f&&!on){
+        } if(chook.rotation.z<0f&&!on){
             on = true;
         }
+        pipe.on = on;
+
+        
     }
-    void OnTriggerStay2D(Collider2D collider2D){
-        if(collider2D.GetComponent<IActive>()==null)return;
-        Debug.Log(collider2D.gameObject.name);
-        collider2D.GetComponent<IActive>().Active(on);
-    }
+    
 }

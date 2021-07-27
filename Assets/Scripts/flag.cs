@@ -31,10 +31,15 @@ public class flag : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision){
         if(isHand)return;
         isLook = false;
+        if(!(collision.gameObject.layer == 12)&&!(collision.gameObject.layer == 16))return;
+        
         myRigidbody2D.velocity = Vector2.zero;
         transform.DORotateQuaternion(Quaternion.Euler(0f,0f,-90f),0.5f);
         isFloor = true;
         lastPos = transform.position;
+    }
+    void OnCollisionExit2D(Collision2D collision){
+        isLook = true;
     }
     
     

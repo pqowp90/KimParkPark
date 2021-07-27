@@ -125,7 +125,7 @@ public class PlayerMove : MonoBehaviour
     void BottomChk(){
         Debug.DrawRay(bottomChk.position, ((isBack)?Vector3.right:Vector3.left)*bottomchkDistance, Color.blue);
         if(!isDouble){
-            int layerMask = (1 << LayerMask.NameToLayer("sangho")) + (1 << LayerMask.NameToLayer("Bottom"));
+            int layerMask =  (1 << LayerMask.NameToLayer("Bottom"))+(1 << LayerMask.NameToLayer("Bottom2"));
             isGround = Physics2D.Raycast(bottomChk.position,((isBack)?Vector3.right:Vector3.left) * bottomchkDistance, bottomchkDistance,layerMask);
             // isGround = Physics2D.Raycast(bottomChk.position,((isBack)?Vector3.right:Vector3.left) * bottomchkDistance, bottomchkDistance,g_layerMask[0])||
             // Physics2D.Raycast(bottomChk.position,((isBack)?Vector3.right:Vector3.left) * bottomchkDistance, bottomchkDistance,g_layerMask[1]);
