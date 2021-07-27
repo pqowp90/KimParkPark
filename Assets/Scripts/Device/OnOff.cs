@@ -14,15 +14,6 @@ public class OnOff : MonoBehaviour
     private bool isTouch = false;
     private bool onOff = false;
     
-    // private void OnTriggerEnter2D(Collider2D collision){
-    //     if(isTouch)return;
-    //     if(collision.CompareTag("Player")||collision.CompareTag("Flag")){
-    //         isTouch = true;
-    //         Active();
-    //         Debug.Log("À×");
-    //         Invoke("OffTouch" , 0.5f);
-    //     }
-    // }
     private void OnTriggerEnter2D(Collider2D collision){
         if(isTouch)return;
         if(collision.CompareTag("Player")||collision.CompareTag("Flag")){
