@@ -20,10 +20,12 @@ public class Lever : MonoBehaviour
     {
         if(chook.rotation.z>0f&&on){
             on = false;
+            PlayMusic();
         } if(chook.rotation.z<0f&&!on){
             on = true;
+            PlayMusic();
         }
-        PlayMusic();
+        
         pipe.on = on;
     }
     private void PlayMusic(){
