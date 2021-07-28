@@ -366,7 +366,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1970139000}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -18.489578, y: -24.710432, z: -19440}
+  m_LocalPosition: {x: -18.489578, y: -24.710432, z: 0}
   m_LocalScale: {x: 132.29364, y: 133.49654, z: 130.75078}
   m_Children: []
   m_Father: {fileID: 1436049583}
@@ -555,7 +555,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1915097595366671870}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 104.3, y: 4.9, z: -16}
+  m_LocalPosition: {x: 25, y: -60.2, z: -16}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1915097595020102428}
@@ -709,7 +709,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 107.4
   field of view: 60
   orthographic: 1
   orthographic size: 5
@@ -1484,6 +1484,7 @@ MonoBehaviour:
   isJumping: 0
   isBack: 0
   isDouble: 0
+  isPause: 0
   flagPrefab: {fileID: 4819593041571663824}
   hand: {fileID: 4819593042873126135}
   fallDistance: 15
@@ -1497,7 +1498,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4819593042655398775}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 104.3, y: 4.9, z: -6}
+  m_LocalPosition: {x: 25, y: -60.2, z: -6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4819593042719868840}
