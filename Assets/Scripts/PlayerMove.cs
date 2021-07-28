@@ -23,7 +23,7 @@ public class PlayerMove : MonoBehaviour
     public static GameObject _player;
     public float fallDistance = 20,flagStrength;
     public float maxPosition = 0;
-    private bool isDamaged = false,isCharging,ohohFlag;
+    private bool isDamaged = false,isCharging,ohohFlag,isDie;
     
     private PlayerHPUI playerHpUI;
     // Start is called before the first frame update
@@ -38,8 +38,14 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if(isPause)return;
         Move();
+        if(isDie){
+            myAnimator.SetBool("IsDie",isDie);
+            
+            return;
+        }
         Jump();
         BottomChk();
         //fallDamaged();
@@ -146,6 +152,7 @@ public class PlayerMove : MonoBehaviour
     private void Move(){
         nowSpeed = speed*((!isCharging)?1f:0.1f);
         hori = Input.GetAxisRaw("Horizontal");
+        if(isDie)hori=0;
         myAnimator.SetInteger("Hori",(int)hori);
         if(hori==0){
             Xrate = 9f;
@@ -154,6 +161,7 @@ public class PlayerMove : MonoBehaviour
             isBack = (hori>0);
             transform.rotation = Quaternion.Euler(0f,(isBack)?0f:180f,0f);
         }
+        
         horizonXM = Mathf.Lerp(horizonXM,hori*nowSpeed,Time.deltaTime*Xrate);
         myRigidbody2D.velocity=new Vector2(horizonXM,
             myRigidbody2D.velocity.y);
@@ -207,7 +215,9 @@ public class PlayerMove : MonoBehaviour
         }
         if(collision.CompareTag("Thorn"))
         {
-            _player.SetActive(false);
+            isDie = true;
+            myAnimator.SetTrigger("boom");
+            
         }
     }
 }
