@@ -11,7 +11,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameStart.unity
     guid: 0a96735c6d0fa7d4486ed918fcb3b8b1
-  - enabled: 1
-    path: Assets/Scenes/Wasabe.unity
-    guid: 2ffd7b459b98ff748bbeb6388740bdf4
   m_configObjects: {}

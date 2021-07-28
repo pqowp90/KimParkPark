@@ -50,7 +50,7 @@ public class ButtonManager : MonoBehaviour
         isEsc=false;
     }
     public void OnClickStart(){
-        SceneManager.LoadScene("Wasabe");
+        SceneManager.LoadScene("Main");
     }
     public void OnClickSettingExit(){
         isSetting = false;
