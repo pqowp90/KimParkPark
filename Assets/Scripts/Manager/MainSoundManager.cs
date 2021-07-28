@@ -26,9 +26,9 @@ public class MainSoundManager : MonoBehaviour
     }
     public void PlaySoundEffect()
     {
-        Debug.Log("À×");
         soundEffect.ignoreListenerPause = true;
         soundEffect.PlayOneShot(soundClip , PlayerPrefs.GetFloat("Volume",1f));
+        Debug.Log("À×");
     }
 
 }
