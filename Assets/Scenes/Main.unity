@@ -44262,6 +44262,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48c1a105866d4c14fafd673cfe006250, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  backgroundMusic: {fileID: 0}
+  soundEffect: {fileID: 0}
+  soundClip: {fileID: 0}
 --- !u!4 &1544194615
 Transform:
   m_ObjectHideFlags: 0
@@ -44704,6 +44707,7 @@ MonoBehaviour:
   settingButtons: {fileID: 415107990}
   buttonCanvas: {fileID: 389883560}
   volumeSlider: {fileID: 0}
+  buttons: []
 --- !u!4 &1655605195
 Transform:
   m_ObjectHideFlags: 0

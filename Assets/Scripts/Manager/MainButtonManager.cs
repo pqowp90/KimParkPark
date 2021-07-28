@@ -14,7 +14,7 @@ public class MainButtonManager : MonoBehaviour
     [SerializeField]
     private Canvas buttonCanvas = null;
     [SerializeField]
-    private Slider volumeSlider;
+    private Button[] buttons;
 
     private PlayerMove playerMove = null;
 
@@ -42,7 +42,6 @@ public class MainButtonManager : MonoBehaviour
         settingButtons.enabled = true;
         AudioListener.pause = true;
         buttonCanvas.enabled = false;
-        volumeSlider.interactable = true;
         Time.timeScale = 0f;
         playerMove.isPause = true;
         isEsc = false;
@@ -55,7 +54,6 @@ public class MainButtonManager : MonoBehaviour
         AudioListener.pause = false;
         Time.timeScale = 1f;
         playerMove.isPause = false;
-        volumeSlider.interactable = false;
         isEsc = true;
     }
     private void OnClickEsc(){
