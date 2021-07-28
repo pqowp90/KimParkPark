@@ -28,6 +28,7 @@ public class EndFlag : MonoBehaviour
         mapsmaps.transform.GetChild(mapsmaps.progress).gameObject.SetActive(false);
         mapsmaps.progress+=1;
         mapsmaps.transform.GetChild(mapsmaps.progress).gameObject.SetActive(true);
+        FindObjectOfType<PlayerMove>().transform.position = Vector3 .zero;
         Debug.Log("d");
 
         
