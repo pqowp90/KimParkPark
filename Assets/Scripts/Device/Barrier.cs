@@ -15,6 +15,6 @@ public class Barrier : MonoBehaviour , IActive
     }
     
     public void Active(bool onOff){
-        transform.GetChild(0).gameObject.SetActive(onOff);
+        transform.GetChild(0).gameObject.SetActive(!onOff);
     }
 }
