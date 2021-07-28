@@ -31,9 +31,21 @@ PrefabInstance:
       propertyPath: poortal
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2293233771378957651, guid: 7ce654a7a4c993244b8e1200c3eca32e, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2293233771378957651, guid: 7ce654a7a4c993244b8e1200c3eca32e, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2293233771378957651, guid: 7ce654a7a4c993244b8e1200c3eca32e, type: 3}
+      propertyPath: m_Color.r
+      value: 0.93372107
+      objectReference: {fileID: 0}
     - target: {fileID: 2293233771378957655, guid: 7ce654a7a4c993244b8e1200c3eca32e, type: 3}
       propertyPath: m_Name
-      value: smallPortal
+      value: smallPortal Variant
       objectReference: {fileID: 0}
     - target: {fileID: 2293233771378957655, guid: 7ce654a7a4c993244b8e1200c3eca32e, type: 3}
       propertyPath: m_Layer
