@@ -36,11 +36,14 @@ public class flag : MonoBehaviour
         
         myRigidbody2D.velocity = Vector2.zero;
         transform.DORotateQuaternion(Quaternion.Euler(0f,0f,-90f),0.5f);
-        isFloor = true;
-        lastPos = transform.position;
+        
     }
     void OnCollisionExit2D(Collision2D collision){
         isLook = true;
+    }
+    public void SetPoint(){
+        isFloor = true;
+        lastPos = transform.position;
     }
     
     

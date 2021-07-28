@@ -32,7 +32,7 @@ TagManager:
   - barrier
   - Wall
   - NoPlayer
-  - 
+  - FlagChk
   - 
   - 
   - 
