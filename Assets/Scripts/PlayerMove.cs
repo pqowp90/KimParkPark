@@ -55,7 +55,8 @@ public class PlayerMove : MonoBehaviour
             FlagPickUp();
         }
         if(Input.GetKeyDown(KeyCode.Q)){
-            
+            transform.position = Vector3.zero;
+            FlagPickUp();
         }
     }
     private void FalgCharging(){
@@ -101,7 +102,7 @@ public class PlayerMove : MonoBehaviour
         flagScript.isLook=true;
         flagScript.isHand = false;
     }
-    private void FlagPickUp(){
+    public void FlagPickUp(){
         flagPrefab.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
         flagPrefab.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         flagPrefab.transform.SetParent(hand.transform);

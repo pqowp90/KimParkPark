@@ -29,7 +29,10 @@ public class EndFlag : MonoBehaviour
         mapsmaps.progress+=1;
         mapsmaps.transform.GetChild(mapsmaps.progress).gameObject.SetActive(true);
         FindObjectOfType<PlayerMove>().transform.position = Vector3 .zero;
+        FindObjectOfType<PlayerMove>().FlagPickUp();
+        FindObjectOfType<flag>().lastPos = Vector2.zero;
         Debug.Log("d");
+        
 
         
     }
