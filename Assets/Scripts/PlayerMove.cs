@@ -55,11 +55,7 @@ public class PlayerMove : MonoBehaviour
             FlagPickUp();
         }
         if(Input.GetKeyDown(KeyCode.Q)){
-            if(!flagPrefab.GetComponent<flag>().isFloor){
-                transform.position = flagPrefab.GetComponent<flag>().lastPos+Vector2.up;
-                return;
-            }
-            transform.position = flagPrefab.transform.position+Vector3.up;
+            
         }
     }
     private void FalgCharging(){
@@ -217,7 +213,16 @@ public class PlayerMove : MonoBehaviour
         {
             isDie = true;
             myAnimator.SetTrigger("boom");
-            
+            Invoke("UnDie",2f);
         }
+    }
+    private void UnDie(){
+        isDie = false;
+        myAnimator.SetBool("IsDie",isDie);
+        if(!flagPrefab.GetComponent<flag>().isFloor){
+            transform.position = flagPrefab.GetComponent<flag>().lastPos+Vector2.up;
+            return;
+        }
+        transform.position = flagPrefab.transform.position+Vector3.up;
     }
 }

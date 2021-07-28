@@ -17,7 +17,6 @@ public class EndFlag : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision){
         if(collision.CompareTag("Flag")){
-            collision.gameObject.transform.position = new Vector2(endPos.transform.position.x , endPos.transform.position.y);
             //collision.gameObject.transform.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             onFlag = true;
         }
