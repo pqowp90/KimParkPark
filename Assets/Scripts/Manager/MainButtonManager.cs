@@ -13,8 +13,6 @@ public class MainButtonManager : MonoBehaviour
     [Header("¹öÆ°")]
     [SerializeField]
     private Canvas buttonCanvas = null;
-    [SerializeField]
-    private Button[] buttons;
 
     private PlayerMove playerMove = null;
 
