@@ -15,9 +15,10 @@ public class EndFlag : MonoBehaviour
         int i = 0;
         if(collision.CompareTag("Flag")){
             collision.gameObject.transform.position = new Vector2(endPos.transform.position.x , endPos.transform.position.y);
+            collision.gameObject.transform.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             onFlag = true;
         }
-        if(collision.gameObject.layer == 2&&onFlag){
+        if(collision.gameObject.layer == 6&&onFlag){
             Debug.Log("Å¬¸®¾î");
             maps[i].SetActive(false);
             i +=1;
