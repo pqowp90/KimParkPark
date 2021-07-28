@@ -18,12 +18,15 @@ public class MainButtonManager : MonoBehaviour
 
     private PlayerMove playerMove = null;
 
-    private bool isSetting = false;
+    private bool isSetting = false, isEsc =  true;
 
     private void Start(){
         playerMove = FindObjectOfType<PlayerMove>();
         settingCanvas.enabled = false;
         settingButtons.enabled = false;
+    }
+    private void Update(){
+        OnClickEsc();
     }
     public void OnClickQuit(){
         if(isSetting)return;
@@ -42,6 +45,7 @@ public class MainButtonManager : MonoBehaviour
         volumeSlider.interactable = true;
         Time.timeScale = 0f;
         playerMove.isPause = true;
+        isEsc = false;
     }
     public void OnClickSettingExit(){
         isSetting = false;
@@ -52,5 +56,16 @@ public class MainButtonManager : MonoBehaviour
         Time.timeScale = 1f;
         playerMove.isPause = false;
         volumeSlider.interactable = false;
+        isEsc = true;
+    }
+    private void OnClickEsc(){
+        if(Input.GetKeyDown(KeyCode.Escape)){
+            if(isEsc){
+                OnClickSetting();
+            }
+            else{
+                OnClickSettingExit();
+            }
+        }
     }
 }
