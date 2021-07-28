@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EndFlag : MonoBehaviour
 {
@@ -25,6 +26,10 @@ public class EndFlag : MonoBehaviour
         }
     }
     private void NextLevel(int level){
+        if(mapsmaps.progress==8){
+            SceneManager.LoadScene("GameStart");
+            return;
+        }
         mapsmaps.transform.GetChild(mapsmaps.progress).gameObject.SetActive(false);
         mapsmaps.progress+=1;
         mapsmaps.transform.GetChild(mapsmaps.progress).gameObject.SetActive(true);
@@ -36,4 +41,5 @@ public class EndFlag : MonoBehaviour
 
         
     }
+    
 }

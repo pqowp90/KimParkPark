@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 8165537121009975492}
   - component: {fileID: 8165537121009975499}
   - component: {fileID: 8165537121009975495}
-  m_Layer: 12
+  m_Layer: 13
   m_Name: EndFlag
-  m_TagString: Bottom
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
