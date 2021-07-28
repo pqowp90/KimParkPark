@@ -113,6 +113,7 @@ public class PlayerMove : MonoBehaviour
     }
     private void Jump(){
         if(Input.GetButtonDown("Jump")&&isGround){
+            isDouble = false;
             myAnimator.SetTrigger("Jump");
             isJumping=true;
             jumpingTime=0f;
@@ -124,7 +125,7 @@ public class PlayerMove : MonoBehaviour
             
         }
         if(Input.GetButtonUp("Jump")){
-            isDouble = false;
+            
             isJumping=false;
             jumpingTime=0f;
         }
