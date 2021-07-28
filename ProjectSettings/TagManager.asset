@@ -31,8 +31,8 @@ TagManager:
   - Thorn
   - barrier
   - Wall
-  - 
-  - 
+  - NoPlayer
+  - FlagChk
   - 
   - 
   - 

@@ -10,18 +10,22 @@ public class EndFlag : MonoBehaviour
     private Transform endPos;
 
     private bool onFlag = false;
-    
+    private int i = 0;
     private void OnTriggerEnter2D(Collider2D collision){
-        int i = 0;
         if(collision.CompareTag("Flag")){
             collision.gameObject.transform.position = new Vector2(endPos.transform.position.x , endPos.transform.position.y);
+            collision.gameObject.transform.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             onFlag = true;
         }
-        if(collision.gameObject.layer == 2&&onFlag){
-            Debug.Log("클리어");
-            maps[i].SetActive(false);
-            i +=1;
-            maps[i].SetActive(true);
+        if(collision.gameObject.layer == 6&&onFlag){
+            NextLevel(i);
         }
+    }
+    private void NextLevel(int level){
+        Debug.Log("클리어");
+        i = level;
+        maps[i].SetActive(false);
+        i +=1;
+        maps[i].SetActive(true);
     }
 }

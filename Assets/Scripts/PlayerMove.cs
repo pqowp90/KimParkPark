@@ -50,10 +50,10 @@ public class PlayerMove : MonoBehaviour
         }
         if(Input.GetKeyDown(KeyCode.Q)){
             if(!flagPrefab.GetComponent<flag>().isFloor){
-                transform.position = flagPrefab.GetComponent<flag>().lastPos;
+                transform.position = flagPrefab.GetComponent<flag>().lastPos+Vector2.up;
                 return;
             }
-            transform.position = flagPrefab.transform.position;
+            transform.position = flagPrefab.transform.position+Vector3.up;
         }
     }
     private void FalgCharging(){

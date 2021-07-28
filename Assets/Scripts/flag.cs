@@ -19,6 +19,7 @@ public class flag : MonoBehaviour
 
     void Update()
     {
+        transform.position = new Vector3(transform.position.x,transform.position.y,-8f);
         myCollider2D.enabled = !isHand;
         if(isHand){
             transform.localRotation = Quaternion.Euler(0f,0f,-135.254f);
@@ -35,11 +36,14 @@ public class flag : MonoBehaviour
         
         myRigidbody2D.velocity = Vector2.zero;
         transform.DORotateQuaternion(Quaternion.Euler(0f,0f,-90f),0.5f);
-        isFloor = true;
-        lastPos = transform.position;
+        
     }
     void OnCollisionExit2D(Collision2D collision){
         isLook = true;
+    }
+    public void SetPoint(){
+        isFloor = true;
+        lastPos = transform.position;
     }
     
     
