@@ -7,6 +7,7 @@ public class Down : MonoBehaviour
 
     public float down;
     private float originalPos;
+    
 
     void Start()
     {
@@ -28,13 +29,13 @@ public class Down : MonoBehaviour
     // {
     //     if (collision.gameObject.layer == LayerMask.NameToLayer("Bottom"))
     //     {
-    //         Debug.Log("¹Ù´Ú°úÃæµ¹°¡½Ã");
+    //         Debug.Log("ï¿½Ù´Ú°ï¿½ï¿½æµ¹ï¿½ï¿½ï¿½ï¿½");
 
     //     }
     // }
-    private void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == 12 || collision.gameObject.layer == 6)
+        if (collision.gameObject.layer == 4)
         {
             down = originalPos;
         }

@@ -9,15 +9,24 @@ public class SoundManager : MonoBehaviour
     [SerializeField]
     private AudioSource soundEffect = null;
 
-    public void SetMusicVolume(float volume){
-        PlayerPrefs.SetFloat("Volume" , volume);
+    private void Start()
+    {
+        musicAudio.ignoreListenerPause = true;
+        musicAudio.Play();
+    }
+    public void SetMusicVolume(float volume)
+    {
+        PlayerPrefs.SetFloat("Volume", volume);
         musicAudio.volume = volume;
     }
-    public void SetSoundEffectVolume(float volume){
-        PlayerPrefs.SetFloat("Volume" , volume);
+    public void SetSoundEffectVolume(float volume)
+    {
+        PlayerPrefs.SetFloat("Volume", volume);
         soundEffect.volume = volume;
     }
-    public void OnClickSoundEffect(){
+    public void OnClickSoundEffect()
+    {
+        soundEffect.ignoreListenerPause = true;
         soundEffect.Play();
     }
 }

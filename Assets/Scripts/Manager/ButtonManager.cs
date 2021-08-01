@@ -22,11 +22,14 @@ public class ButtonManager : MonoBehaviour
     [SerializeField]
     private Canvas buttonCanvas = null;
 
-    private bool isSetting = false;
+    private bool isSetting = false , isEsc = true;
 
     private void Start(){
         settingCanvas.enabled = false;
         settingButtons.enabled = false;
+    }
+    private void Update(){
+        OnClickEsc();
     }
     public void OnClickQuit(){
         if(isSetting)return;
@@ -43,9 +46,11 @@ public class ButtonManager : MonoBehaviour
         buttonCanvas.enabled = false;
         titleCanvas.enabled = false;
         titleButton.enabled = false;
+        AudioListener.pause =true;
+        isEsc=false;
     }
     public void OnClickStart(){
-        SceneManager.LoadScene("Wasabe");
+        SceneManager.LoadScene("Main");
     }
     public void OnClickSettingExit(){
         isSetting = false;
@@ -54,5 +59,17 @@ public class ButtonManager : MonoBehaviour
         buttonCanvas.enabled = true;
         titleButton.enabled = true;
         titleCanvas.enabled = true;
+        AudioListener.pause =false;
+        isEsc=true;
+    }
+    private void OnClickEsc(){
+        if(Input.GetKeyDown(KeyCode.Escape)){
+            if(isEsc){
+                OnClickSetting();
+            }
+            else{
+                OnClickSettingExit();
+            }
+        }
     }
 }
