@@ -8,7 +8,7 @@ public class Barrier : MonoBehaviour , IActive
         Debug.Log("dd");
         collision.gameObject.GetComponent<Rigidbody2D>().velocity = -transform.position + collision.transform.position;
         //collision.transform.position -= (transform.position - collision.transform.localPosition)*0.4f;
-        collision.GetComponent<flag>().isLook = false;
+        collision.GetComponent<Flag>().isLook = false;
         if(!collision.gameObject.GetComponentInParent<PlayerMove>())return;
         collision.gameObject.GetComponentInParent<PlayerMove>().Throwing();
         

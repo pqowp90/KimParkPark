@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class boxbox : MonoBehaviour
 {
-    private flag flag;
+    private Flag Flag;
     private bool ohses;
     void Start()
     {
-        flag = FindObjectOfType<flag>();
+        Flag = FindObjectOfType<Flag>();
     }
 
     void Update()
     {
-        transform.position = flag.transform.position;
+        transform.position = Flag.transform.position;
     }
     void OnTriggerEnter2D(Collider2D collider2D){
         
@@ -25,7 +25,7 @@ public class boxbox : MonoBehaviour
     }
     void Chkchk(){
         if(ohses){
-            flag.SetPoint();
+            Flag.SetPoint();
         }
     }
     void OnTriggerExit2D(Collider2D collider2D){

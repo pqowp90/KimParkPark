@@ -10,18 +10,23 @@ public class EndFlag : MonoBehaviour
     [SerializeField]
     private Transform endPos;
     private maps mapsmaps;
+    private Flag flag;
 
     private bool onFlag = false;
     private int i = 0;
     private void Update(){
         mapsmaps = FindObjectOfType<maps>();
+        flag = FindObjectOfType<Flag>();
     }
     private void OnTriggerEnter2D(Collider2D collision){
         if(collision.CompareTag("Flag")){
             //collision.gameObject.transform.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             onFlag = true;
         }
-        if(collision.gameObject.layer == 6&&onFlag){
+        if(collision.gameObject.layer == 6&& flag.isHand){
+            NextLevel(i);
+        }
+        else if(collision.gameObject.layer == 6&&onFlag){
             NextLevel(i);
         }
     }
@@ -35,7 +40,7 @@ public class EndFlag : MonoBehaviour
         mapsmaps.transform.GetChild(mapsmaps.progress).gameObject.SetActive(true);
         FindObjectOfType<PlayerMove>().transform.position = Vector3 .zero;
         FindObjectOfType<PlayerMove>().FlagPickUp();
-        FindObjectOfType<flag>().lastPos = Vector2.zero;
+        FindObjectOfType<Flag>().lastPos = Vector2.zero;
         Debug.Log("d");
         
 

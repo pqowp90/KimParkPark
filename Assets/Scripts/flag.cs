@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class flag : MonoBehaviour
+public class Flag : MonoBehaviour
 {
     private float rotateDegree;
     private Rigidbody2D myRigidbody2D;

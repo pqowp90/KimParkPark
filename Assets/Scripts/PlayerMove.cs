@@ -15,7 +15,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField]
     private Transform bottomChk;
     private Animator myAnimator;
-    public bool isGround,isJumping,isBack , isDouble , isPause;
+    public bool isGround,isJumping,isBack , isPause , isInDouble;
     private Vector2 oPosition;
     [SerializeField]
     private GameObject flagPrefab,hand;
@@ -26,7 +26,7 @@ public class PlayerMove : MonoBehaviour
     private bool isDamaged = false,isCharging,ohohFlag,isDie;
     
     private PlayerHPUI playerHpUI;
-    // Start is called before the first frame update
+
     void Start()
     {
         _player = gameObject;
@@ -35,7 +35,6 @@ public class PlayerMove : MonoBehaviour
         myAnimator = GetComponentInChildren<Animator>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         
@@ -61,7 +60,7 @@ public class PlayerMove : MonoBehaviour
     }
     private void FalgCharging(){
         if(Input.GetMouseButtonDown(0)&&!EventSystem.current.IsPointerOverGameObject()){
-            if(!flagPrefab.GetComponent<flag>().isHand)return;
+            if(!flagPrefab.GetComponent<Flag>().isHand)return;
             myAnimator.SetTrigger("boom");
             
             
@@ -89,7 +88,7 @@ public class PlayerMove : MonoBehaviour
         
     }
     public void Throwing(){
-        if(!flagPrefab.GetComponent<flag>().isHand)return;
+        if(!flagPrefab.GetComponent<Flag>().isHand)return;
         radian = rotateDegree*Mathf.PI/180f;
         x =Mathf.Cos(radian);
         y =Mathf.Sin(radian);
@@ -98,7 +97,7 @@ public class PlayerMove : MonoBehaviour
         flagPrefab.transform.rotation = Quaternion.Euler(0f,0f,rotateDegree);
         flagPrefab.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
         flagPrefab.GetComponent<Rigidbody2D>().velocity = new Vector2(x,y)*flagStrength*5f;
-        flag flagScript = flagPrefab.GetComponent<flag>();
+        Flag flagScript = flagPrefab.GetComponent<Flag>();
         flagScript.isLook=true;
         flagScript.isHand = false;
     }
@@ -106,15 +105,18 @@ public class PlayerMove : MonoBehaviour
         flagPrefab.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
         flagPrefab.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         flagPrefab.transform.SetParent(hand.transform);
-        flagPrefab.GetComponent<flag>().isFloor = false;
-        flagPrefab.GetComponent<flag>().isLook=false;
-        flagPrefab.GetComponent<flag>().isHand = true;
+        flagPrefab.GetComponent<Flag>().isFloor = false;
+        flagPrefab.GetComponent<Flag>().isLook=false;
+        flagPrefab.GetComponent<Flag>().isHand = true;
         flagPrefab.transform.localPosition = Vector3.zero;
         flagPrefab.transform.localRotation = Quaternion.Euler(0f,0f,-142.758f);
     }
     private void Jump(){
+        if(isInDouble && Input.GetButtonDown("Jump")){
+            myRigidbody2D.velocity = Vector2.zero;
+        }
         if(Input.GetButtonDown("Jump")&&isGround){
-            isDouble = false;
+            isInDouble = false;
             myAnimator.SetTrigger("Jump");
             isJumping=true;
             jumpingTime=0f;
@@ -132,19 +134,20 @@ public class PlayerMove : MonoBehaviour
         }
     }
     void BottomChk(){
+
         Debug.DrawRay(bottomChk.position, ((isBack)?Vector3.right:Vector3.left)*bottomchkDistance, Color.blue);
-        if(!isDouble){
-            int layerMask =  (1 << LayerMask.NameToLayer("Bottom"))+(1 << LayerMask.NameToLayer("Bottom2"));
-            isGround = Physics2D.Raycast(bottomChk.position,((isBack)?Vector3.right:Vector3.left) * bottomchkDistance, bottomchkDistance,layerMask);
-            myAnimator.SetBool("IsGround",isGround);
-            myAnimator.SetFloat("Yvel",myRigidbody2D.velocity.y);
-            // isGround = Physics2D.Raycast(bottomChk.position,((isBack)?Vector3.right:Vector3.left) * bottomchkDistance, bottomchkDistance,g_layerMask[0])||
-            // Physics2D.Raycast(bottomChk.position,((isBack)?Vector3.right:Vector3.left) * bottomchkDistance, bottomchkDistance,g_layerMask[1]);
-        
+        if (!isInDouble)
+        {
+            int layerMask = (1 << LayerMask.NameToLayer("Bottom")) + (1 << LayerMask.NameToLayer("Bottom2"));
+            isGround = Physics2D.Raycast(bottomChk.position, ((isBack) ? Vector3.right : Vector3.left) * bottomchkDistance, bottomchkDistance, layerMask);
+            myAnimator.SetBool("IsGround", isGround);
+            myAnimator.SetFloat("Yvel", myRigidbody2D.velocity.y);
         }
         else{
             isGround = true;
         }
+        // isGround = Physics2D.Raycast(bottomChk.position,((isBack)?Vector3.right:Vector3.left) * bottomchkDistance, bottomchkDistance,g_layerMask[0])||
+        // Physics2D.Raycast(bottomChk.position,((isBack)?Vector3.right:Vector3.left) * bottomchkDistance, bottomchkDistance,g_layerMask[1]);
 
     }
     private void Move(){
@@ -153,9 +156,9 @@ public class PlayerMove : MonoBehaviour
         if(isDie)hori=0;
         myAnimator.SetInteger("Hori",(int)hori);
         if(hori==0){
-            Xrate = 9f;
+            Xrate = 11f;
         }else{
-            Xrate = 3f;
+            Xrate = 5f;
             isBack = (hori>0);
             transform.rotation = Quaternion.Euler(0f,(isBack)?0f:180f,0f);
         }
@@ -193,7 +196,7 @@ public class PlayerMove : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         if(collision.gameObject.layer == 21){
-            isDouble = false;
+            isInDouble = false;
             Debug.Log("����");
             gameObject.layer = 0;
         }
@@ -201,11 +204,15 @@ public class PlayerMove : MonoBehaviour
             ohohFlag = false;
         }
     }
-
+    private void OnTriggerStay2D(Collider2D collision){
+        if(collision.gameObject.layer == 21 && isGround){
+            isInDouble = true;
+        }
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.layer == 21){
-            isDouble = true;
+            isInDouble = true;
             Debug.Log("����");
         }
         if(collision.gameObject.layer == 9){
@@ -218,11 +225,16 @@ public class PlayerMove : MonoBehaviour
             Invoke("UnDie",2f);
         }
     }
+    // private void OnTriggerStay2D(Collider2D collision){
+    //     if(isInDouble && isGround){
+    //         isInDouble = true;
+    //     }
+    // }
     private void UnDie(){
         isDie = false;
         myAnimator.SetBool("IsDie",isDie);
-        if(!flagPrefab.GetComponent<flag>().isFloor){
-            transform.position = flagPrefab.GetComponent<flag>().lastPos+Vector2.up;
+        if(!flagPrefab.GetComponent<Flag>().isFloor){
+            transform.position = flagPrefab.GetComponent<Flag>().lastPos+Vector2.up;
             return;
         }
         transform.position = flagPrefab.transform.position+Vector3.up;
