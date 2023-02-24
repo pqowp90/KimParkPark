@@ -56,6 +56,17 @@ public class PlayerMove : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Q)){
             transform.position = Vector3.zero;
             FlagPickUp();
+            FanCode[] fans = FindObjectsOfType<FanCode>();
+            OnOffBlock[] onOffBlocks = FindObjectsOfType<OnOffBlock>();
+            for (int i = 0; i < fans.Length; ++i)
+            {
+                fans[i].on = false;
+            }
+
+            for (int i = 0; i < onOffBlocks.Length; ++i)
+            {
+                onOffBlocks[i].on = false;
+            }
         }
     }
     private void FalgCharging(){
@@ -213,7 +224,7 @@ public class PlayerMove : MonoBehaviour
     {
         if(collision.gameObject.layer == 21){
             isInDouble = true;
-            Debug.Log("����");
+            Debug.Log("잉");
         }
         if(collision.gameObject.layer == 9){
             ohohFlag = true;
